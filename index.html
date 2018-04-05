@@ -1,0 +1,18 @@
+---
+title: "Home"
+layout: blank
+---
+<main>
+  {% for post in site.posts %}
+  <article>
+    <header>
+      <h1><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h1>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+    </header>
+    {{ post.excerpt }}
+    {% unless post.excerpt == post.content %}
+    <footer><a class="ghost" href="{{ post.url | prepend: site.baseurl }}">Read more</a></footer>
+    {% endunless %}
+  </article>
+{% endfor %}
+</main>
