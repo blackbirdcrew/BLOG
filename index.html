@@ -7,6 +7,9 @@ layout: blank
   <article>
     <header>
       <h1><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h1>
+      {% if post.author %}
+      <p style="margin-top:0px;margin-bottom:0px;">Written by {{ post.author }}</p>
+      {% endif %}
       <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
     </header>
     {{ post.excerpt }}
