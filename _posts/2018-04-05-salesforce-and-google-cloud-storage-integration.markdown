@@ -29,7 +29,222 @@ You will need to [generate a private key](https://cloud.google.com/storage/docs/
 Once you have the private key converted to JKS, you will have to upload it to your Salesforce organization. In the Setup menu, navigate to:
 - Setup > Certificate and Key Management
 
-Once inside the **Certificate and Key Management** page, you have to upload the JKS private key stored in your computer and provide the password that you entered for the Keystore during the conversion. You can imagine this as your organization's *password* for integrating with Google Storage.
-- *Note: I used the same password that Google supplied for the PKCS12 private key for the keystore.*
+Once inside the **Certificate and Key Management** page, you have to upload the JKS private key stored in your computer and provide the password that you entered for the Keystore during the conversion. You can imagine this as your organization's *password* for integrating with Google Storage. *Note: I used the same password that Google supplied for the PKCS12 private key for the keystore.*
 
 ### REST
+Once you have uploaded the token to Salesforce, you will have to write an Apex class that encapsulates the logic for *fetching* an access token from Google. In OAuth, you never send credentials over open networks, but instead send access tokens during requests. These access tokens (you can imagine them as temporary passwords) will expire within a certain number of time, so everytime you make a callout, you have to catch the possibility that the access token was exipired and your request was rejected by Google.
+
+*Note: replace double quotes with single quotes (our syntax highlighter doens't support Apex code yet).*
+{% highlight java %}
+// Google documentation: https://developers.google.com/identity/protocols/OAuth2ServiceAccount#creatingjwt
+public class GoogleAuthentication {
+    private final static String PRIVATE_KEY = "privatekey"; // replace with what you named your jks token
+    private final static String AUTH_ENDPOINT = "https://www.googleapis.com/oauth2/v4/token";
+    private final static String JWS_SCOPE = "scope";
+    private final static String JWS_IAT = "iat";
+    private final static String JWS_EXP = "exp";
+    public final static String WRITE_SCOPE = "https://www.googleapis.com/auth/cloud-platform";
+
+    // Store the access token in custom settings to reuse accross transactions
+    private static GoogleStorage__c googleStorageSettings = GoogleStorage__c.getOrgDefaults();
+
+    /**
+     * Scope is defined as : A space-delimited list of the permissions that the application requests.
+     * Can be https://www.googleapis.com/auth/cloud-platform for example to edit and manage. Return an
+     * AuthenticationResponse to inform code if we have commit to DB to not make another callout in
+     * the same transaction.
+     */
+    public static AuthenticationResponse getAccessToken(String scope) {
+        AuthenticationResponse response = new AuthenticationResponse(googleStorageSettings.AccessToken__c);
+        if (response.accessToken == null) {
+        	response = fetchNewAccessToken(scope);
+        }
+        return response;
+    }
+
+    /**
+     * JSON Web Token (JWT) bundles private key and some additional required information 
+     */
+    public static AuthenticationResponse fetchNewAccessToken(String scope) {
+        Auth.JWT jwt = new Auth.JWT();
+        String serviceAccountEmail = googleStorageSettings.ServiceAccountEmail__c;
+        Map<String, Object> claimMap = buildClaimMap(scope);
+
+        jwt.setIss(serviceAccountEmail);
+        jwt.setAud(AUTH_ENDPOINT);
+        jwt.setAdditionalClaims(claimMap);
+
+        // 'privatekey' cert created using java keytool converting p12 file obtained from google to jks
+        Auth.JWS jws = new Auth.JWS(jwt, PRIVATE_KEY);
+
+        // may throw a Auth.JWTBearerTokenExchange.​JWTBearerTokenExchangeException​
+        Auth.JWTBearerTokenExchange bearer = new Auth.JWTBearerTokenExchange(AUTH_ENDPOINT, jws);
+        AuthenticationResponse response = new AuthenticationResponse(bearer.getAccessToken());
+
+        if (response.accessToken != null) {
+        	googleStorageSettings.AccessToken__c = response.accessToken;
+        	update googleStorageSettings;
+        	response.requiresAjaxCall = true;
+        }
+
+        return response;
+    }
+
+    private static Map<String, Object> buildClaimMap(String scope) {
+        Map<String, Object> claimMap = new Map<String, Object>();
+        String issueTime = getIssueTime();
+        String expirationTime = getExpirationTime(issueTime);
+
+        claimMap.put(JWS_SCOPE, scope);
+        claimMap.put(JWS_IAT,   issueTime);
+        claimMap.put(JWS_EXP,   expirationTime);
+
+        return claimMap;
+    }
+
+    private static String getIssueTime() {
+        Long timeSince = System.now().getTime();
+        String iatTime = String.valueOf(timeSince);
+        return iatTime;
+    }
+
+    private static String getExpirationTime(String issueTime) {
+        Long longIssueTime = Long.valueOf(issueTime);
+        String expTime = String.valueOf(longIssueTime - 3600);
+        return expTime;
+    }
+
+    public class AuthenticationResponse {
+        public String accessToken;
+        public Boolean requiresAjaxCall; // Must use javascript to start another transaction
+
+        public AuthenticationResponse(String accessToken) {
+            this.accessToken = accessToken;
+            this.requiresAjaxCall = false;
+        }
+    }
+}
+{% endhighlight %}
+
+This class encapsulates the retrieval of an access token, whether it already exists as a custom setting or requires the fetching of another token from our Google Storage's endpoint. In the case that we have to fetch another token, we have to build a [JSON Web Token](https://tools.ietf.org/html/rfc7519). If you have never worked with JSON Authentication like this before, there is nothing overly-complex about this code. You are really just sending your JKS private key in JSON format with additional meta information to secure the token request.
+
+Then, you need to develop the full REST callout. I like to extend a common virtual class for all of my callouts:
+{% highlight java %}
+public virtual class HttpCallout {
+ 
+    protected Http callout { get; set;}
+    protected HttpRequest request { get; set; }
+    
+    public HttpResponse response { get; set; }
+
+    public HttpCallout(String method, String endpoint) {
+        this.callout = new Http();
+        this.request = new HttpRequest();
+        this.request.setEndpoint(endpoint);
+        this.request.setMethod(method);
+    }
+
+    public void send() {
+        this.response = this.callout.send(this.request);
+    }
+}
+{% endhighlight %}
+{% highlight java %}
+public class GoogleStorageCallout extends HttpCallout {
+	private String fileName;
+	private String contentType;
+	private Integer fileSize;
+	private String fileBody;
+	private String accessToken;
+	public Boolean requiresAjaxCall;
+
+	public static GoogleStorage__c googleStorageSettings = GoogleStorage__c.getInstance();
+	private static final String MEDIA = "media";
+	private static final String RESUMABLE = "resumable";
+	private static final String AUTHOIZATION = "Authorization";
+	private static final String BEARER = "Bearer ";
+	private static final String CONTENT_TYPE = "Content-Type";
+	private static final String CONTENT_LENGTH = "Content-Length";
+	private static final String RANGE = "Content-Range";
+	private static final String PREDEFINED_CONTENT_TYPE = "application/json; charset=UTF-8";
+
+	private GoogleStorageCallout(String fileName, String contentType, String fileBody,
+                                    Integer fileSize) {
+		super(Util.HTTP_POST, buildEndpoint(fileName));
+		this.fileName = fileName;
+		this.contentType = contentType;
+		this.fileBody = fileBody;
+		this.fileSize = fileSize;
+		setAccessToken();
+		setRequestBody();
+		setHeaders();
+	}
+
+	private void setAccessToken() {
+		GoogleAuthentication.AuthenticationResponse response =
+                    GoogleAuthentication.getAccessToken(GoogleAuthentication.WRITE_SCOPE);
+		this.accessToken = response.accessToken;
+		this.requiresAjaxCall = response.requiresAjaxCall;
+	}
+
+	public void refreshAccessToken() {
+		GoogleAuthentication.AuthenticationResponse response =
+                    GoogleAuthentication.fetchNewAccessToken(GoogleAuthentication.WRITE_SCOPE);
+		this.accessToken = response.accessToken;
+		this.requiresAjaxCall = response.requiresAjaxCall;
+	}
+
+	private void setRequestBody() {
+		this.request.setBodyAsBlob(EncodingUtil.base64Decode(this.fileBody));
+	}
+
+	private void setHeaders() {
+		this.request.setHeader(AUTHOIZATION, BEARER + this.accessToken);
+                this.request.setHeader(CONTENT_TYPE, this.contentType);
+                this.request.setHeader(CONTENT_LENGTH, String.valueOf(this.fileSize));
+	}
+
+	public void setAuthorizationHeader(String accessToken) {
+		this.request.setHeader(AUTHOIZATION, BEARER + accessToken);
+	}
+
+	private static Integer calculateFileSize(Integer startByte, Integer endByte) {
+		return endByte - startByte;
+	}
+
+	private static String buildEndpoint(String fileName) {
+		return endpoint = googleStorageSettings.URL__c + googleStorageSettings.BucketName__c
+                    + "/o?uploadType=" + MEDIA + "&name=" + fileName;
+	}
+
+	private static String buildRange(Integer startByte, Integer endByte) {
+		return "bytes=" + String.valueOf(startByte) + "-" + String.valueOf(endByte);
+	}
+}
+{% endhighlight %}
+
+This code can then be called like the following:
+{% highlight java %}
+GoogleStorageCallout postImageCallout = new GoogleStorageCallout(
+    your_image_name, your_image_content_type,
+    your_image_body, your_image_file_size
+);
+
+if (postImageCallout.requiresAjaxCall) {
+    // Access token was renewed, and you have to start another
+    // transaction before making a callout due to Salesforce
+    // restriction on Database commits.
+} else {
+    postImageCallout.send();
+    if (postImageCallout.response.getStatusCode() >= 200
+        && postImageCallout.response.getStatusCode() < 300) {
+        // Success!
+    } else if (postImageCallout.response.getStatusCode() >= 400
+                && postImageCallout.response.getStatusCode() < 500) {
+        // Access token has expired and you have to renew it!
+        postImageCallout.refreshAccessToken();
+    } else {
+        // unexpected error
+    }
+}
+{% endhighlight %}
