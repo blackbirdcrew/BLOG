@@ -9,7 +9,7 @@ comments: true
 
 **Integración de Gmail con Salesforce**
 
-![IMAGE 1](https://github.com/blackbirdcrew/BLOG/blob/master/pictures/10-07-2019/1.png)
+![IMAGE 1](https://github.com/blackbirdcrew/blog/blob/master/pictures/10-07-2019/1.png)
 
 La integración consta de dos partes:
 
