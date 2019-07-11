@@ -9,7 +9,7 @@ comments: true
 
 **Integración de Gmail con Salesforce**
 
-<img src="./pictures/10-07-2019/1.png" class="img-responsive" alt=""> </div>
+![Some text]({{site.url}}{{site.baseurl}}/pictures/10-07-2019/1.png)
 
 La integración consta de dos partes:
 
