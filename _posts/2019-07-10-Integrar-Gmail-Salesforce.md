@@ -3,7 +3,7 @@ layout: default
 title:  "Integración de Gmail con Salesforce"
 date:   2019-07-10 00:02:00 -0800
 author: Rafa Garcia-Planas
-categories: Gmail, Salesforce
+categories: Gmail Salesforce
 comments: true
 ---
 
