@@ -7,7 +7,7 @@ categories: Gmail, Salesforce
 comments: true
 ---
 
-Gracias a la integración de Gmail con Salesforce los usuarios podrán enviar correos electrónicos a los clientes sin salir de salesforce y también podrán  asignar los correos a los registros pertinentes. 
+Gracias a la integración de Gmail con Salesforce podremos acceder a nuestros clientes o candidatos desde la bandeja de correo sin tener que navegar entre ventanas. Además, podremos tener ambos calendarios perfectamente sincronizados.
 
 ![IMG1]({{site.url}}{{site.baseurl}}/pictures/10-07-2019/1.png)
 
