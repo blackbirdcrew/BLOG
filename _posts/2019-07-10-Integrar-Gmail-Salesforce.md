@@ -9,7 +9,7 @@ comments: true
 
 **Integración de Gmail con Salesforce**
 
-![Some text]({{site.url}}{{site.baseurl}}/pictures/10-07-2019/1.png)
+![IMG1]({{site.url}}{{site.baseurl}}/pictures/10-07-2019/1.png)
 
 La integración consta de dos partes:
 
@@ -19,7 +19,7 @@ Para poder configurar ambas deberemos ir desde Salesforce a Configuración → I
 
 La primera es la más sencilla. Para empezar con ella solo tenemos que **Activar** el botón para permitir a los usuarios acceder a registros de Salesforce desde Gmail. Una vez hecho esto, se nos abre un desplegable con una serie de configuraciones que ahora os explicamos.
 
-![IMAGE 2](https://github.com/blackbirdcrew/BLOG/blob/master/pictures/10-07-2019/2.png)
+![IMG2]({{site.url}}{{site.baseurl}}/pictures/10-07-2019/2.png)
 
  1. _Utilizar correo electrónico mejorado con Gmail._
 Nos permite relacionar los correos electrónicos en el objeto estándar de Salesforce ‘EmailMessages’ en vez de tareas, lo que les permitirá poder contestar al email desde Salesforce. Se activa automáticamente excepto si estáis utilizando el correo electrónico para el registro de casos en Salesforce.
@@ -51,14 +51,14 @@ Las acciones disponibles por defecto son: Nuevo evento, Nueva cuenta, Nueva tare
 
 La segunda parte de la integración nos permite poder tener sincronizados en todo momento los contactos de ambos sistemas así como los calendarios. Una vez activado se nos abrirá un desplegable con tres partes.
 
-![IMAGE 3](https://github.com/blackbirdcrew/BLOG/blob/master/pictures/10-07-2019/3.png)
+![IMG3]({{site.url}}{{site.baseurl}}/pictures/10-07-2019/3.png)
 
 **Conectar Salesforce y Google** consta de tres pasos:
 1. Registrar Google con Salesforce: Simplemente hay que clicar en el botón de Registrar sitio. Crear un nuevo sitio remoto com un nombre que nos ayude a identificarlo en el futuro (por ejemplo: Google Integration) y en la URL la siguiente dirección: https://www.googleapis.com.
 1. Una vez hecho esto deberemos ir a nuestra cuenta de Gsuite para configurarla y poder seguir la integración: https://help.salesforce.com/articleView?id=lightning_sync_admin_google_prep_google.htm
 1. Una vez generada la clave y cargada a Salesforce solo nos faltará comprobar que la conexión es correcta. Una vez hecha la prueba nos debería devolver dos mensajes. Uno con el estado de la integración a nivel de contactos y otro del calendario.
 
-![IMAGE 4](https://github.com/blackbirdcrew/BLOG/blob/master/pictures/10-07-2019/4.png)
+![IMG4]({{site.url}}{{site.baseurl}}/pictures/10-07-2019/4.png)
 
 Para acabar con la configuración deberemos definir los criterios de sincronización que queremos aplicar. 
 
@@ -112,7 +112,7 @@ Una vez hecho esto ya podemos guardar y ya tendríamos la integración finalizad
 
 Como último paso, solo faltaría instalar la extensión de Chrome y una vez hecho, iniciar sesión a nuestra cuenta de Salesforce.
 
-![IMAGE 5](https://github.com/blackbirdcrew/BLOG/blob/master/pictures/10-07-2019/5.png)
+![IMG5]({{site.url}}{{site.baseurl}}/pictures/10-07-2019/5.png)
 
 Extensión [Salesforce](https://bit.ly/2T5GK7H)
 
