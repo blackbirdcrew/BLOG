@@ -31,7 +31,7 @@ Deberemos activarlo en caso de que dispongamos de licencias de Inbox. La licenci
     1. Envío de una serie de fechas disponibles para agendar una reunión a los clientes o prospects para que puedan escoger una, quedando esta agendada automáticamente.
 
  1. _Seleccionar quién puede utilizar Inbox._
-En caso de disponer de una licencia Inbox se deberá crear un Conjunto de permisos para poder asignar a los usuarios correspondientes el acceso a todas estas [herramientas](https://help.salesforce.com/articleView?id=inbox_setup_select_users.htm&type=5)
+En caso de disponer de una licencia Inbox se deberá crear un Conjunto de permisos para poder asignar a los usuarios correspondientes el acceso a todas estas [herramientas](https://help.salesforce.com/articleView?id=inbox_setup_select_users.htm&type=5).
 
 
  1. _Mantener Gmail y Salesforce conectados._
