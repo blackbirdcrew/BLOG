@@ -2,7 +2,7 @@
 layout: default
 title:  "Integración de Gmail con Salesforce"
 date:   2018-07-10 00:02:00 -0800
-author: Lucas Puig
+author: Rafa Garcia-Planas
 categories: Gmail, Salesforce
 comments: true
 ---
@@ -31,7 +31,7 @@ Deberemos activarlo en caso de que dispongamos de licencias de Inbox. La licenci
     1. Envío de una serie de fechas disponibles para agendar una reunión a los clientes o prospects para que puedan escoger una, quedando esta agendada automáticamente.
 
  1. _Seleccionar quién puede utilizar Inbox._
-En caso de disponer de una licencia Inbox se deberá crear un Conjunto de permisos para poder asignar a los usuarios correspondientes el acceso a todas estas herramientas (https://help.salesforce.com/articleView?id=inbox_setup_select_users.htm&type=5)
+En caso de disponer de una licencia Inbox se deberá crear un Conjunto de permisos para poder asignar a los usuarios correspondientes el acceso a todas estas [herramientas](https://help.salesforce.com/articleView?id=inbox_setup_select_users.htm&type=5)
 
 
  1. _Mantener Gmail y Salesforce conectados._
@@ -54,8 +54,8 @@ La segunda parte de la integración nos permite poder tener sincronizados en tod
 ![IMG3]({{site.url}}{{site.baseurl}}/pictures/10-07-2019/3.png)
 
 **Conectar Salesforce y Google** consta de tres pasos:
-1. Registrar Google con Salesforce: Simplemente hay que clicar en el botón de Registrar sitio. Crear un nuevo sitio remoto com un nombre que nos ayude a identificarlo en el futuro (por ejemplo: Google Integration) y en la URL la siguiente dirección: https://www.googleapis.com.
-1. Una vez hecho esto deberemos ir a nuestra cuenta de Gsuite para configurarla y poder seguir la integración: https://help.salesforce.com/articleView?id=lightning_sync_admin_google_prep_google.htm
+1. Registrar Google con Salesforce: Simplemente hay que clicar en el botón de Registrar sitio. Crear un nuevo sitio remoto com un nombre que nos ayude a identificarlo en el futuro (por ejemplo: Google Integration) y en la URL la [siguiente](https://www.googleapis.com) dirección: .
+1. Una vez hecho esto deberemos ir a nuestra cuenta de Gsuite para configurarla y poder seguir la [integración] (https://help.salesforce.com/articleView?id=lightning_sync_admin_google_prep_google.html):
 1. Una vez generada la clave y cargada a Salesforce solo nos faltará comprobar que la conexión es correcta. Una vez hecha la prueba nos debería devolver dos mensajes. Uno con el estado de la integración a nivel de contactos y otro del calendario.
 
 ![IMG4]({{site.url}}{{site.baseurl}}/pictures/10-07-2019/4.png)
