@@ -3,7 +3,7 @@ layout: default
 title:  "Integración de Gmail con Salesforce"
 date:   2018-07-10 00:02:00 -0800
 author: Lucas Puig
-categories: Google API Authentication
+categories: Gmail, Salesforce
 comments: true
 ---
 
