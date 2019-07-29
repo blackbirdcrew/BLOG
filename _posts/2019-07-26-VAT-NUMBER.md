@@ -7,7 +7,7 @@ categories: VAT
 comments: true
 ---
 
-Seguro que en muchas ocasiones nos hemos encontrado con que los proyectos requieren de un validador de formato del VAT, así como la comprobación de que este esté registrado en el VIES. 
+Seguro que en muchas ocasiones nos hemos encontrado con que los proyectos requieren de un validador de formato del VAT, así como la comprobación de que este esté registrado en el VIES. Vamos a ver como lo podemos implementar!
 
 De entre las aplicaciones que existen en el AppExchange, recomendamos dos aplicaciones que cumplen a la perfección su cometido, y al usarse de manera combinada dan solución a esta necesidad:
 
