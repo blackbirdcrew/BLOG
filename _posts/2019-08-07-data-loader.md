@@ -25,11 +25,11 @@ Antes de empezar hay que tener en cuenta dos cosas:
 
 <br/>
 
-![Descarga de Zulu OpenJDK]({{site.url}}{{site.baseurl}}/pictures/07-08-2019/1.png)
+![Descarga de Zulu OpenJDK]({{site.url}}{{site.baseurl}}/pictures/7-08-2019/1.png)
 
 <br/>
 
-![Instalación Zulu OpenJDK]({{site.url}}{{site.baseurl}}/pictures/07-08-2019/2.png)
+![Instalación Zulu OpenJDK]({{site.url}}{{site.baseurl}}/pictures/7-08-2019/2.png)
 
 <br/>
 
@@ -37,14 +37,14 @@ Cuando el proceso de instalación termine, nos dispondremos a instalar Data Load
 
 Una vez descargado, descomprimimos el zip y ejecutamos el fichero install.command. Nos preguntará si queremos poner un acceso directo a la carpeta de aplicaciones y al escritorio, y en ambos casos diremos que **sí**. 
 
-![Instalación Data Loader]({{site.url}}{{site.baseurl}}/pictures/07-08-2019/3.png)
+![Instalación Data Loader]({{site.url}}{{site.baseurl}}/pictures/7-08-2019/3.png)
 
 
 ### Configurar Data Loader
 
 En esta sección vamos a hablar sobre algunas de las opciones que podemos configurar en Data Loader para evitarnos posibles complicaciones. 
 
-![Configuración Data Loader]({{site.url}}{{site.baseurl}}/pictures/07-08-2019/4.png)
+![Configuración Data Loader]({{site.url}}{{site.baseurl}}/pictures/7-08-2019/4.png)
 
 > (Menú al cual accederemos desde settings - settings).
 
