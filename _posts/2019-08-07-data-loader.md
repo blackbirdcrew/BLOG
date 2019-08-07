@@ -77,6 +77,8 @@ Vamos a daros algún consejo para ver qué formatos pueden usarse en ciertos tip
     * YYYY-MM-DDThh:mm:ss.sssZ
 
 
-**Long Area Text**: Es importante tener en cuenta para estos campos que si hay saltos de línea el excel no lo haya puesto en una fila nueva porque si no Data Loader dará error al cargar el archivo. 
-<br/>
+* **Long Area Text**: Es importante tener en cuenta para estos campos que si hay saltos de línea el excel no lo haya puesto en una fila nueva porque si no Data Loader dará error al cargar el archivo. 
+
+
+
 Una vez instalado y configurado, Data Loader será una herramienta mucho más útil que, por ejemplo, Import Wizard (herramienta similar ofrecida de forma nativa por Salesforce). Creemos que Data Loader es la mejor solución ya que gracias a su rápido funcionamiento, su flexibilidad y el gran volumen de registros que es capaz de procesar, es la herramienta preferida por los administradores.
