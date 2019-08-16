@@ -149,6 +149,8 @@ Ways to expand this solution:
 
 *The way Salesforce Platform works is that if a batch insert fails due to one or more records failure and if allOrNone is set to false (which is default for data loader), the platform re-triggers another insert operation with a new batch which contains only the valid/good records (in this case all records except the last one). This second insert operation is actually responsible for inserting the valid records. The first one does not insert any records.* 
 
+<br/>
+
 ### **What happens when we have this kind of insertion/update of records and a workflow rule that updates them?**
 
 - The first insert fails due to one or more records failure and Salesforce makes a subselection of those.
@@ -165,6 +167,7 @@ But we still are in trouble if we stop using the static variables since the resu
 - The trigger does its insert/update again.
 
 ***
+## Conclusion
 
 The solutions to this scenarios are far more complex since we cannot rely on static variables and will be covered in a future article but I hope this general guidelines have helped you so far to know different approaches to solve the recursion problems.
 
