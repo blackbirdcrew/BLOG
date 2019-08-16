@@ -139,27 +139,21 @@ Ways to expand this solution:
 
 * **Disadvantages**:
     * Doesn’t cover all scenarios
-    
-***
-
-## **Which scenarios aren’t we covering?**
-
-* Partial Insert/updates: When we do an operation like:
-   * Use Data Loader
-   * Any use of Apex Database.update(records,false); True also for the other Database.xxx methods.
-   * Bulk, SOAP, or REST APIs that either default AllOrNone to false or set explicitly if available.
-
-*The way Salesforce Platform works is that if a batch insert fails due to one or more records failure and if allOrNone is set to false (which is default for data loader), the platform re-triggers another insert operation with a new batch which contains only the valid/good records (in this case all records except the last one). This second insert operation is actually responsible for inserting the valid records. The first one does not insert any records.* 
-
+      * Partial Insert/updates: When we do an operation like:
+         * Use Data Loader
+         * Any use of Apex Database.update(records,false); True also for the other Database.xxx methods.
+         * Bulk, SOAP, or REST APIs that either default AllOrNone to false or set explicitly if available.
+	
+These partial Insert/Updated aren't covered in this solution because, given the way Salesforce Platform works, if a batch insert fails due to one or more records failure and if allOrNone is set to false (which is default for data loader), the platform re-triggers another insert operation with a new batch which contains only the valid/good records (in this case all records except the last one). This second insert operation is actually responsible for inserting the valid records. The first one does not insert any records.
 <br/>
 
-### **What happens when we have this kind of insertion/update of records and a workflow rule that updates them?**
+**What happens when we have this kind of insertion/update of records and a workflow rule that updates them?**
 
 - The first insert fails due to one or more records failure and Salesforce makes a subselection of those.
 - The second insertion takes place and the subselection is inserted but because the id’s were inserted on the set already on the 1º iteration we don’t do the dml.
 - All possible future updates will be ignored since the id of the record is already on the Set<id> of records that we will ignore.
 
-The key to understanding this process is that any STATIC variables we might wanna use are not reliable when some records can succeed and some can fail.
+The key to understanding this process is that **any STATIC variables we might wanna use are not reliable when some records can succeed and some can fail**.
 
 But we still are in trouble if we stop using the static variables since the result would be this:
 
@@ -169,7 +163,7 @@ But we still are in trouble if we stop using the static variables since the resu
 - The trigger does its insert/update again.
 
 ***
-## **Conclusion**
+## **Final thoughts**
 
 The solutions to this scenarios are far more complex since we cannot rely on static variables and will be covered in a future article but I hope this general guidelines have helped you so far to know different approaches to solve the recursion problems.
 
