@@ -10,7 +10,7 @@ comments: true
 Note: *The examples of this article are set up directly on the trigger for exemplification purposes, on your orgs please try to set up a proper  TriggerFramework.*
 
 One of the issues developers can face when creating Triggers is Recursion Problems. As we will see this can get far more tricky than it initially seems. But first:
-## What is a recursion problem?
+## **What is a recursion problem?**
 
 
 To find it out we only have to create this little code on a trigger:
@@ -38,8 +38,8 @@ So we call a **recursion problem** when some **parts of our code or processes ca
 
 ***
 
-## How can we solve this? 
-### First solution
+## **How can we solve this?**
+### **First solution**
 ```
 trigger onAccount on Account (after update) {
     List<Account> accountsToupdate = new List<Account> ();
@@ -76,7 +76,7 @@ At this point, we realize some issues:
 **Disadvantages**: 
 * Lack of flexibility, doesn’t work for more than 200 records.
 
-### Second solution
+### **Second solution**
 If we can do so, we should establish conditions so we don’t enter again in the trigger. We will mostly exemplify scenarios where you cannot do it by just establishing the modification rules that stop the recursion.
 ```
 trigger onAccount on Account (after update) {
@@ -94,7 +94,7 @@ This doesn’t work though if we have a workflow/process builder that has the sa
 
 *Trigger.old contains a version of the objects before the specific update that fired the trigger. However, there is an exception. When a record is updated and subsequently triggers a workflow rule field update, Trigger.old in the last update trigger won’t contain the version of the object immediately prior to the workflow update, but the object before the initial update was made*
 
-### Third solution
+### **Third solution**
 We assume we have a Workflow active on our object (which will be Account on this example):
 - After a recordChanges & When a record is created or changes.
 
@@ -133,8 +133,10 @@ Ways to expand this solution:
 
 * **Disadvantages**:
     * Doesn’t cover all scenarios
+    
 ***
-## Which scenarios aren’t we covering?
+
+## **Which scenarios aren’t we covering?**
 
 * Partial Insert/updates: When we do an operation like:
    * Use Data Loader
@@ -145,7 +147,7 @@ The way salesforce platform behaves is the following:
 
 *The way Salesforce Platform works is that if a batch insert fails due to one or more records failure and if allOrNone is set to false (which is default for data loader), the platform re-triggers another insert operation with a new batch which contains only the valid/good records (in this case all records except the last one). This second insert operation is actually responsible for inserting the valid records. The first one does not insert any records.* 
 
-### What happens when we have this kind of insertion/update of records and a workflow rule that updates them?
+### **What happens when we have this kind of insertion/update of records and a workflow rule that updates them?**
 
 - The first insert fails due to one or more records failure and Salesforce makes a subselection of those.
 - The second insertion takes place and the subselection is inserted but because the id’s were inserted on the set already on the 1º iteration we don’t do the dml.
