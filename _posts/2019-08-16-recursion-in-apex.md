@@ -76,7 +76,7 @@ At this point, we realize some issues:
 **Disadvantages**: 
 * Lack of flexibility, doesn’t work for more than 200 records.
 
-\s\s
+<br/>
 
 ### **Second solution**
 If we can do so, we should establish conditions so we don’t enter again in the trigger. We will mostly exemplify scenarios where you cannot do it by just establishing the modification rules that stop the recursion.
@@ -96,7 +96,7 @@ This doesn’t work though if we have a workflow/process builder that has the sa
 
 *Trigger.old contains a version of the objects before the specific update that fired the trigger. However, there is an exception. When a record is updated and subsequently triggers a workflow rule field update, Trigger.old in the last update trigger won’t contain the version of the object immediately prior to the workflow update, but the object before the initial update was made*
 
-\s\s
+<br/>
 
 ### **Third solution**
 We assume we have a Workflow active on our object (which will be Account on this example):
