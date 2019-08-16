@@ -7,9 +7,11 @@ categories: Apex Salesforce
 comments: true
 ---
 
+One of the issues developers can face when creating Triggers is Recursion Problems. As we will see this can get far more tricky than it initially seems.
+
 Note: *The examples of this article are set up directly on the trigger for exemplification purposes, on your orgs please try to set up a proper  TriggerFramework.*
 
-One of the issues developers can face when creating Triggers is Recursion Problems. As we will see this can get far more tricky than it initially seems. But first:
+But first:
 ## **What is a recursion problem?**
 
 
@@ -167,7 +169,7 @@ But we still are in trouble if we stop using the static variables since the resu
 - The trigger does its insert/update again.
 
 ***
-## Conclusion
+## **Conclusion**
 
 The solutions to this scenarios are far more complex since we cannot rely on static variables and will be covered in a future article but I hope this general guidelines have helped you so far to know different approaches to solve the recursion problems.
 
