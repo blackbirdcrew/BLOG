@@ -29,6 +29,7 @@ For small buisinesses WhatsApp has provided the [WhatsApp Business App](https://
 For medium and large businesses Facebook has provided a directory of [registered partners](https://www.facebook.com/business/partner-directory/search?platforms=whatsapp&solution_type=messaging) and their solutions. In this tutorial we'll be looking at Weboxapp as the consultancy that is integrated with WhatsApp. There are many consultancies to choose from and the integration and result will vary depending on your choice.
 
 You can start using [Waboxapp](https://www.waboxapp.com) for free up to 100 messages a month to see if it work for you. Price for using this service goes up when you start sending more messages. 
+
 ## General project overview. 
 As you can see it fairly simple. We send a message then update the message status once we receive the result from Waboxapp.
 ![IMG1]({{site.url}}{{site.baseurl}}/pictures/31-08-2019/Whatsapp Overview.png)
@@ -254,7 +255,7 @@ public with sharing class Handler_Lead {
     
 }
 ```
-Lastly let's design a simple page that will display the contents of the chat and give us the ability to send a message.
+Lastly let's design a simple page that will display the contents of the chat and give us the ability to send a message. We' could also use CometD to be able to se changes in real time. 
 ```html
 	<apex:page controller="WhatsAppController">
 	    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -263,9 +264,6 @@ Lastly let's design a simple page that will display the contents of the chat and
 	    <apex:includeScript value="{!$Resource.json2_js}"/>
 	    <script type="text/javascript" src="{!URLFOR($Resource.cometd_zip, 'dojo/dojo.js')}" data-dojo-config="async: 1"></script>
 	    <script>var token = '{!$Api.Session_ID}';</script>
-	    <script type="text/javascript" src="{!$Resource.WhatsappStreaming_js}"></script>
-	    <apex:stylesheet value="{!$Resource.Whatsapp_css}"/>
-
 		<apex:form >
 	        <apex:sectionHeader title="Chat with {!name} using WhatsApp"/>
 	        <apex:pageBlock id="form">
@@ -274,43 +272,7 @@ Lastly let's design a simple page that will display the contents of the chat and
 	                    <div class="col-sm-6 col-sm-offset-3 frame">
 	                        <ul class="whatschat">
 	                            <apex:repeat var="m" value="{!messages}">
-	                            <li style="width:100%" id="{!m.Id}">
-	                                <div class="{!IF(m.Status__c == "sent","msj", "msj-rta")} macro">                                
-	                                    <apex:outputText rendered="{!m.Status__c == 'sent'}">
-	                                        <div class="avatar"><img class="img-circle" style="width:50px;" src="{!m.createdby.FullPhotoUrl}" /></div>
-	                                    </apex:outputText>
-	                                    
-	                                    <div class="text {!IF(m.Status__c == "sent","text-l", "text-r")} ">
-	                                        <p>{!m.Message__c}</p>
-	                                        <!-- <p><small>{!m.CreatedDate}</small></p> -->
-	                                        <p><small>
-	                                            <apex:outputText value="{0,date,MM'/'dd'/'yyyy hh':'mm a}">
-	                                                <apex:param value="{!m.CreatedDate}" />
-	                                            </apex:outputText>
-	                                            
-	                                            <apex:outputText rendered="{!AND(m.Ack__c == 'not sent',m.Status__c == 'sent')}">
-	                                                <span class="ack not-sent"></span>
-	                                            </apex:outputText>
-	                                            
-	                                            <apex:outputText rendered="{!AND(m.Ack__c == 'sent',m.Status__c == 'sent')}">
-	                                                <span class="ack sent"></span>
-	                                            </apex:outputText>
-	                                            
-	                                            <apex:outputText rendered="{!AND(m.Ack__c == 'delivered',m.Status__c == 'sent')}">
-	                                                <span class="ack delivered"></span>
-	                                            </apex:outputText>
-
-	                                            <apex:outputText rendered="{!AND(m.Ack__c == 'read',m.Status__c == 'sent')}">
-	                                                <span class="ack read"></span>
-	                                            </apex:outputText>                                                  
-	                                        </small></p>
-	                                    </div>
-	                                    
-	                                    <apex:outputText rendered="{!m.Status__c == 'received'}">
-	                                        <div class="avatar" style="padding:0px 0px 0px 10px !important"><img class="img-circle" style="width:50px;" src="/profilephoto/005/F" /></div>
-	                                    </apex:outputText>
-	                                </div>
-	                            </li>
+	                            	<!-- put and style your messages here -->
 	                            </apex:repeat>
 	                        </ul>
 	                        <div>
@@ -318,7 +280,6 @@ Lastly let's design a simple page that will display the contents of the chat and
 	                                <div class="text text-r" style="background:whitesmoke !important">
 	                                    <apex:inputText html-class="mytext" value="{!message}"/>
 	                                </div> 
-	                            
 	                            </div>
 	                            <div style="padding:10px;">
 	                                <span class="send glyphicon glyphicon-share-alt"></span>
@@ -326,7 +287,6 @@ Lastly let's design a simple page that will display the contents of the chat and
 	                        </div>    
 	                    </div> 
 	                </div>
-	                
 	                <script>
 	                    j$ = jQuery.noConflict();
 	                    j$(".mytext").on("keydown", function(e){           
@@ -351,9 +311,7 @@ Lastly let's design a simple page that will display the contents of the chat and
 	                        ul.scrollTop(ul.prop("scrollHeight"));
 	                    }                                      
 	                  </script>
-	                  
 	            </apex:outputpanel>
-	                                    
 	            <apex:actionFunction name="CallSend" action="{!send}" rerender="msgBlock,chat" onComplete="afterRerender();" />
 	            <apex:actionFunction name="CallRefresh" action="{!refresh}" rerender="chat" onComplete="afterRerender();" />
 	        </apex:pageBlock>
@@ -376,5 +334,19 @@ Lastly let's design a simple page that will display the contents of the chat and
 	    </script>
 	</apex:page>
 ```		
+## Waboxapp
+
+Once you are registered with Waboxapp you can login and go phones where you'll find your API token and hooks url. There's also the list off all you phones with controls. 
+
 ## Waboxapp extention for Chrome 
 
+1. Next step is to install the [Weboxapp](https://chrome.google.com/webstore/detail/waboxapp/mgaecjklgnbkkdfnfpncgnogplnjjcdh) plugin for Chrome.
+1. Click on the icon in Chrome and insert your Token.  
+1. Go to [web.whatsapp.com](web.whatsapp.com).
+1. Login using your whatsapp account. 
+
+** It is important that the phone is logged in at web.whatsapp.com during message sending. Also if you are sending messages in a trigger the phone must be logged in.  **
+
+## Conclusion
+
+When it comes to integrating with Whatsapp using third party apps there are some advantages and limitations. However in my opinion the pros outweigh the cons. Given that Whatsapp is an integral part of many people's lives to have the ability to use this way of comunication in your buiseness is may give you the edge over your competitors.
