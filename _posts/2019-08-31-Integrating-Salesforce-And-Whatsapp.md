@@ -7,13 +7,13 @@ categories: Salesforce, Integration
 comments: true
 ---
 
-## Introduction
+##Introduction
 
 In this tutorial, we’ll set up Salesforce to Whatsapp integration using a third-party API. Our goal is to be able to send and recieve messages, images and other types of files from/to Salesforce, store them and to have the ability to automate the message exchange. We will also have a general overview of the available options.
 
 In this example we'll be using existing back office as part of the integration where we'll be recieving notifications of the result of the message request. Depending on your requirements and existing project structure you can consider having this part of the integration living in Salesforce.
 
-## By the end you will have:
+##By the end you will have:
  - Ability to send and recieve Whatsapp messages via a visualforce page.
  - A trigger to send automated messages
  - Installed third party Chrome plugin provided by Waboxapp
