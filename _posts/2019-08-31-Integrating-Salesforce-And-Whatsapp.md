@@ -8,7 +8,6 @@ comments: true
 ---
 
 ## Introduction
-
 In this tutorial, we’ll set up Salesforce to Whatsapp integration using a third-party API. Our goal is to be able to send and recieve messages, images and other types of files from/to Salesforce, store them and to have the ability to automate the message exchange. We will also have a general overview of the available options.
 
 In this example we'll be using existing back office as part of the integration where we'll be recieving notifications of the result of the message request. Depending on your requirements and existing project structure you can consider having this part of the integration living in Salesforce.
@@ -23,7 +22,6 @@ For this tutorial I am assuming that you have some experience with Salesforce, S
 Let's get started.
 
 ## What are the options to integrate with Whatsapp?
-
 Facebook's Whatsapp has made available several options for businesses depending on their size and needs. 
 
 For small buisinesses WhatsApp has provided the [WhatsApp Business App](https://www.whatsapp.com/business). With it you can interact with your customers and have a way to sort and automate responces. It's a great option, however if we want to be able to customize message content, automate and dynamically change the message throught Salesforce we'll need to look at the other provided option.
@@ -31,25 +29,19 @@ For small buisinesses WhatsApp has provided the [WhatsApp Business App](https://
 For medium and large businesses Facebook has provided a directory of [registered partners](https://www.facebook.com/business/partner-directory/search?platforms=whatsapp&solution_type=messaging) and their solutions. In this tutorial we'll be looking at Weboxapp as the consultancy that is integrated with WhatsApp. There are many consultancies to choose from and the integration and result will vary depending on your choice.
 
 You can start using [Waboxapp](https://www.waboxapp.com) for free up to 100 messages a month to see if it work for you. Price for using this service goes up when you start sending more messages. 
-
 ## General project overview. 
-
 As you can see it fairly simple. We send a message then update the message status once we receive the result from Waboxapp.
 ![IMG1]({{site.url}}{{site.baseurl}}/pictures/31-08-2019/Whatsapp Overview.png)
-
 ## Setting up objects and fields.
-
 First, let's create our message object. In this tutorial I'll call it "WhatsApp Message". If you choose to use another name make sure to change it in all occurences later in this tutorial. 
-
-* ACK. Picklist with: sent, delivered, read, not sent, sending.
-* CID. Text 20.
-* Message or Content. Long Text for the message content. As of whriting this article whatsapp maximum size is 65,536 characters.
-* Status. Text 20
-* Relationship to the object that we'll be using to exchange messages. In this example we'll be linking the message to both Lead and Account. This relationship must be set according to your requirements.
+- ACK. Picklist with: sent, delivered, read, not sent, sending.
+- CID. Text 20.
+- Message or Content. Long Text for the message content. As of whriting this article whatsapp maximum size is 65,536 characters.
+- Status. Text 20.
+- Relationship to the object that we'll be using to exchange messages. In this example we'll be linking the message to both Lead and Account. This relationship must be set according to your requirements.
 
 ## Now let's create the Salesforce chat page . 
-
-Let's begin with the controller. Keep in mind that it should be expanded and changed according to your requirements.
+First, the controller that provides minimal functionality. Keep in mind that it should be expanded and changed according to your requirements.
 ```java
 public with sharing class WhatsAppController {
 
@@ -114,7 +106,7 @@ public with sharing class WhatsAppController {
     }
 	}
 ```
-Now let's have a utility class to work with our controller class.
+Second is utility class to work with our controller.
 ```java
 public class WhatsAppUtilities {
 
@@ -158,9 +150,7 @@ public class WhatsAppUtilities {
     }    
 }
 ``` 
-
 Once the lead is converted to an Account we want to keep all the messages. Let's have a trigger and a handler class that will transfer the messages from lead to account.
-
 ```java
 trigger Lead on Lead (after delete, after insert, after undelete, after update, before delete, before insert, before update) {
 
@@ -258,7 +248,6 @@ public with sharing class Handler_Lead {
     
 }
 ```
-
 Lastly let's design a simple page that will display the contents of the chat and give us the ability to send a message.
 ```html
 	<apex:page controller="WhatsAppController">
