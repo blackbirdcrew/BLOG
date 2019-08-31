@@ -46,7 +46,7 @@ First, let's create our message object. In this tutorial I'll call it "WhatsApp 
 - Status. Text 20.
 - Relationship to the object that we'll be using to exchange messages. In this example we'll be linking the message to both Lead and Account. This relationship must be set according to your requirements.
 
-## Now let's create the Salesforce chat page . 
+## Now let's create the Whatsapp message chat in Salesforce. 
 First, the controller that provides minimal functionality. Our goal here is to be able to send and see existing messages that are related to this record. Keep in mind that it should be expanded and changed according to your requirements.
 ```java
 public with sharing class WhatsAppController {
@@ -349,4 +349,4 @@ Once you are registered with Waboxapp you can login and go phones where you'll f
 
 ## Conclusion
 
-When it comes to integrating with Whatsapp using third party apps there are some advantages and limitations. However in my opinion the pros outweigh the cons. Given that Whatsapp is an integral part of many people's lives to have the ability to use this way of comunication in your buiseness is may give you the edge over your competitors.
+When it comes to integrating with Whatsapp using third party apps there are some advantages and limitations. However in my opinion the pros outweigh the cons. Waboxapp provides a way to develop this functionality relatively quick. Given that Whatsapp is an integral part of many people's lives to have the ability to use this way of comunication in your buiseness is may give you the edge over your competitors.
