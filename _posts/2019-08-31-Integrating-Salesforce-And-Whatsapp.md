@@ -13,7 +13,7 @@ In this tutorial, we’ll set up a Salesforce to Whatsapp integration using a th
 
 
 We'll need a utility class for our needs
-```java
+```apex
 public class WhatsAppUtilities {
 
     public static String sendMessage(String message, String strFrom, String strTo, String accountId, String leadId, String cid) {
