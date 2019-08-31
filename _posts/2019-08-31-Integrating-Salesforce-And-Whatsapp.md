@@ -57,7 +57,7 @@ First, let's create our WhatsApp Message object. In this tutorial I'll call it "
 For this we are going to need a visualforce page and it's controller. Please note that lightning components or other frameworks can be used to achieve the result. 
 
 This controller that provides minimal functionality. Our goal here is to be able to send and see existing messages that are related to this record. It should be further developed and changed according to your requirements.
-```java
+```c#
 public with sharing class WhatsAppController {
 
     public List<WhatsAppMessage__c> messages {get;set;}
