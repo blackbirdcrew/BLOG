@@ -7,34 +7,34 @@ categories: Salesforce, Integration
 comments: true
 ---
 
-##Introduction
+## Introduction
 
 In this tutorial, we’ll set up Salesforce to Whatsapp integration using a third-party API. Our goal is to be able to send and recieve messages, images and other types of files from/to Salesforce, store them and to have the ability to automate the message exchange. We will also have a general overview of the available options.
 
 In this example we'll be using existing back office as part of the integration where we'll be recieving notifications of the result of the message request. Depending on your requirements and existing project structure you can consider having this part of the integration living in Salesforce.
 
-##By the end you will have:
+## By the end you will have:
  - Ability to send and recieve Whatsapp messages via a visualforce page.
  - A trigger to send automated messages
  - Installed third party Chrome plugin provided by Waboxapp
 
 For this tutorial I am assuming that you have some experience with Salesforce, Salesforce's APEX, have Salesforce Enterprise edition and using Google Chrome browser.
 
-##Let's get started.
+## Let's get started.
 
 Here's the general project overview:
 ![IMG1]({{site.url}}{{site.baseurl}}/pictures/31-08-2019/Whatsapp Overview.png)
 
 
-##What are the options to integrate with Whatsapp?
+## What are the options to integrate with Whatsapp?
 
-	Facebook's Whatsapp has made available several options for businesses depending on their size and needs. 
+Facebook's Whatsapp has made available several options for businesses depending on their size and needs. 
 
-	For small buisinesses WhatsApp has provided the WhatsApp Business App (https://www.whatsapp.com/business). With it you can interact with your customers and have a way to sort and automate responces. It's a great option, however if we want to be able to customize message content, automate and dynamically change the message throught Salesforce we'll need to look at the other provided option.
+For small buisinesses WhatsApp has provided the WhatsApp Business App (https://www.whatsapp.com/business). With it you can interact with your customers and have a way to sort and automate responces. It's a great option, however if we want to be able to customize message content, automate and dynamically change the message throught Salesforce we'll need to look at the other provided option.
 
-	For medium and large businesses Facebook has provided a directory of registered partners and their solutions. (https://www.facebook.com/business/partner-directory/search?platforms=whatsapp&solution_type=messaging). In this tutorial we'll be looking at Weboxapp as the consultancy that is integrated with WhatsApp. There are many consultancies to choose from and the integration and result will vary depending on your choice.
+For medium and large businesses Facebook has provided a directory of registered partners and their solutions. (https://www.facebook.com/business/partner-directory/search?platforms=whatsapp&solution_type=messaging). In this tutorial we'll be looking at Weboxapp as the consultancy that is integrated with WhatsApp. There are many consultancies to choose from and the integration and result will vary depending on your choice.
 
-	You can start using Waboxapp (https://www.waboxapp.com) for free up to 100 messages a month to see if it work for you. Price for using this service goes up when you start sending more messages. 
+You can start using Waboxapp (https://www.waboxapp.com) for free up to 100 messages a month to see if it work for you. Price for using this service goes up when you start sending more messages. 
 
 ##Setting up objects and fields.
 
