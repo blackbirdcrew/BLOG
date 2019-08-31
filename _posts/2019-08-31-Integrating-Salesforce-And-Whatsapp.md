@@ -14,7 +14,7 @@ In this tutorial, we’ll set up a Salesforce to Whatsapp integration using a th
 ![IMG1]({{site.url}}{{site.baseurl}}/pictures/31-08-2019/Whatsapp Overview.png)
 
 We'll need a utility class for our needs
-```apex
+```C#
 public class WhatsAppUtilities {
 
     public static String sendMessage(String message, String strFrom, String strTo, String accountId, String leadId, String cid) {
