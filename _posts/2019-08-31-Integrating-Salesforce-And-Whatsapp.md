@@ -34,9 +34,14 @@ As you can see it fairly simple. We send a message then update the message statu
 ![IMG1]({{site.url}}{{site.baseurl}}/pictures/31-08-2019/Whatsapp Overview.png)
 ## Setting up objects and fields.
 First, let's create our message object. In this tutorial I'll call it "WhatsApp Message". If you choose to use another name make sure to change it in all occurences later in this tutorial. 
-- ACK. Picklist with: sent, delivered, read, not sent, sending.
+- ACK. Picklist:
+  - sent 
+  - delivered
+  - read
+  - not sent
+  - sending
 - CID. Text 20.
-- Message or Content. Long Text for the message content. As of whriting this article whatsapp maximum size is 65,536 characters.
+- Message. Long Text for the message content. *As of whriting this article whatsapp maximum size is 65,536 characters.*
 - Status. Text 20.
 - Relationship to the object that we'll be using to exchange messages. In this example we'll be linking the message to both Lead and Account. This relationship must be set according to your requirements.
 
