@@ -39,92 +39,82 @@ As you can see it fairly simple. We send a message then update the message statu
 
 ## Setting up objects and fields.
 
-For our requirements we'll create the following objects and fields:
+First, let's create our message object. In this tutorial I'll call it "WhatsApp Message". If you choose to use another name make sure to change it in all occurences later in this tutorial. 
 
-WhatsAppMessage: 
- 	* ACK. Picklist with: sent, delivered, read, not sent, sending.
-	* CID. Text 20.
-	* Message or Content. Long Text for the message content. As of whriting this article whatsapp maximum size is 65,536 characters.
-	* Status. Text 20
-	* Relationship to the object that we'll be using to exchange messages. In this example we'll be linking the message to both Lead and Account. This relationship must be set according to your requirements.
+* ACK. Picklist with: sent, delivered, read, not sent, sending.
+* CID. Text 20.
+* Message or Content. Long Text for the message content. As of whriting this article whatsapp maximum size is 65,536 characters.
+* Status. Text 20
+* Relationship to the object that we'll be using to exchange messages. In this example we'll be linking the message to both Lead and Account. This relationship must be set according to your requirements.
 
-Change the names and labels if you see fit. 
+## Now let's create the Salesforce chat page . 
 
-## Now let's create the classes. 
-
-These should be expanded and changed according to your requirements.
-
-Now let's create the controller.
-
+Let's begin with the controller. Keep in mind that it should be expanded and changed according to your requirements.
 ```java
+public with sharing class WhatsAppController {
 
-	public with sharing class WhatsAppController {
+    public List<WhatsAppMessage__c> messages {get;set;}
+    public String message {get;set;}
+    public Boolean showStatus {get;set;}
+    public String statusMessage {get;set;}
+    public Object leadName {get;set;}
+    public sObject record {get;set;}
+    
+    private User user;
+    private String objectType;
+    private String objectId;
+    private String phone;
 
-	    public List<WhatsAppMessage__c> messages {get;set;}
-	    public String message {get;set;}
-	    public Boolean showStatus {get;set;}
-	    public String statusMessage {get;set;}
-	    public Object leadName {get;set;}
-	    public sObject record {get;set;}
-	    
-	    private User user;
-	    private String objectType;
-	    private String objectId;
-	    private String phone;
-
-	    public WhatsAppController(){
-	        this.objectType = ApexPages.currentPage().getParameters().get('object');
-	        this.objectId = ApexPages.currentPage().getParameters().get('Id');
-	        this.record = Database.query('SELECT Id, Name, Phone, OwnerId FROM ' + this.objectType + ' WHERE Id = :objectId');
-	        this.user = [
-	            SELECT u.SmallPhotoUrl, u.FullPhotoUrl, u.MobilePhone
-	            FROM User u 
-	            WHERE u.Id =: String.valueOf( this.record.get('OwnerId') )
-	        ];
-	        this.leadName = record.get('Name');
-	        this.message = 'Hello ' + this.leadName; 
-	        this.messages = getMessages();
-	    }
-	    
-	    public List<WhatsAppMessage__c> getMessages() {
-	        return Database.query('SELECT format(CreatedDate), Message__c, Status__c, Ack__c, createdby.FullPhotoUrl FROM WhatsAppMessage__c WHERE ' + this.objectType + '__c = :objectId ORDER BY CreatedDate ASC');    
-	    }
-	    
-	    public PageReference send() {
-	        if (this.message == null || this.message == '') {
-	            return null;
-	        }
-	        String messageTo = String.valueOf(this.record.get('Phone')).replace('+', '');
-	        String messageFrom = String.valueOf(this.user.MobilePhone).replace('+', '');
-	        String accountId = this.objectType == 'account' ? this.objectId : null;
-	        String leadId = this.objectType == 'lead' ? this.objectId : null;
-	        String timestamp = String.valueOf(Datetime.Now().getTime());
-	        
-	        //String response = 'OK';
-	        String response = WhatsAppUtilities.sendMessage(message, messageFrom, messageTo, accountId, leadId, timestamp);
-	        
-	        if (response == 'OK') {     
-	            WhatsAppUtilities.createMessage(this.message, accountId, leadId, timestamp);       
-	            this.statusMessage = 'Message Sent';
-	            this.message = '';
-	        } else {
-	           this.statusMessage = response;
-	           this.showStatus = true;
-	        }
-	        this.messages = getMessages();
-	        return null;
-	    }
-	    
-	    public PageReference refresh() {
-	        this.messages = getMessages();
-	        return null;
-	    }
+    public WhatsAppController(){
+        this.objectType = ApexPages.currentPage().getParameters().get('object');
+        this.objectId = ApexPages.currentPage().getParameters().get('Id');
+        this.record = Database.query('SELECT Id, Name, Phone, OwnerId FROM ' + this.objectType + ' WHERE Id = :objectId');
+        this.user = [
+            SELECT u.SmallPhotoUrl, u.FullPhotoUrl, u.MobilePhone
+            FROM User u 
+            WHERE u.Id =: String.valueOf( this.record.get('OwnerId') )
+        ];
+        this.leadName = record.get('Name');
+        this.message = 'Hello ' + this.leadName; 
+        this.messages = getMessages();
+    }
+    
+    public List<WhatsAppMessage__c> getMessages() {
+        return Database.query('SELECT format(CreatedDate), Message__c, Status__c, Ack__c, createdby.FullPhotoUrl FROM WhatsAppMessage__c WHERE ' + this.objectType + '__c = :objectId ORDER BY CreatedDate ASC');    
+    }
+    
+    public PageReference send() {
+        if (this.message == null || this.message == '') {
+            return null;
+        }
+        String messageTo = String.valueOf(this.record.get('Phone')).replace('+', '');
+        String messageFrom = String.valueOf(this.user.MobilePhone).replace('+', '');
+        String accountId = this.objectType == 'account' ? this.objectId : null;
+        String leadId = this.objectType == 'lead' ? this.objectId : null;
+        String timestamp = String.valueOf(Datetime.Now().getTime());
+        
+        //String response = 'OK';
+        String response = WhatsAppUtilities.sendMessage(message, messageFrom, messageTo, accountId, leadId, timestamp);
+        
+        if (response == 'OK') {     
+            WhatsAppUtilities.createMessage(this.message, accountId, leadId, timestamp);       
+            this.statusMessage = 'Message Sent';
+            this.message = '';
+        } else {
+           this.statusMessage = response;
+           this.showStatus = true;
+        }
+        this.messages = getMessages();
+        return null;
+    }
+    
+    public PageReference refresh() {
+        this.messages = getMessages();
+        return null;
+    }
 	}
-
 ```
-
-For our controller let's have a utility class.
-
+Now let's have a utility class to work with our controller class.
 ```java
 public class WhatsAppUtilities {
 
@@ -169,107 +159,107 @@ public class WhatsAppUtilities {
 }
 ``` 
 
-Now let's have a trigger and a handler class that will transfer the messages from lead to account when it's converted.
+Once the lead is converted to an Account we want to keep all the messages. Let's have a trigger and a handler class that will transfer the messages from lead to account.
 
 ```java
-	trigger Lead on Lead (after delete, after insert, after undelete, after update, before delete, before insert, before update) {
+trigger Lead on Lead (after delete, after insert, after undelete, after update, before delete, before insert, before update) {
 
-	    Handler_Lead handler = new Handler_Lead(Trigger.isExecuting);
+    Handler_Lead handler = new Handler_Lead(Trigger.isExecuting);
 
-	    if (Trigger.isBefore) {
-	        /* INSERT */
-	        if (Trigger.isInsert) {
-	            handler.onBeforeInsert(Trigger.new); 
-	        }
-	        /* UPDATE */
-	        if (Trigger.isUpdate) {
-	            handler.onBeforeUpdate(Trigger.old, Trigger.new, Trigger.OldMap, Trigger.NewMap); 
-	        }
-	        /* DELETE */
-	        if (Trigger.isDelete) {
-	            handler.onBeforeDelete(Trigger.old, Trigger.oldMap); 
-	        }
-	    } else {
-	        /* INSERT */
-	        if (Trigger.isInsert) {
-	            handler.onAfterInsert(Trigger.new, Trigger.newMap); 
-	        }
-	        /* UPDATE */
-	        if (Trigger.isUpdate) {
-	            handler.onAfterUpdate(Trigger.old, Trigger.new, Trigger.oldMap, Trigger.newMap); 
-	        }
-	        /* DELETE */
-	        if (Trigger.isDelete) {
-	            handler.onAfterDelete(Trigger.old, Trigger.oldMap); 
-	        }
-	        /* UNDELETE */
-	        if (Trigger.isUndelete) {
-	            handler.onAfterUndelete(Trigger.new); 
-	        }
-	    }
-	}
+    if (Trigger.isBefore) {
+        /* INSERT */
+        if (Trigger.isInsert) {
+            handler.onBeforeInsert(Trigger.new); 
+        }
+        /* UPDATE */
+        if (Trigger.isUpdate) {
+            handler.onBeforeUpdate(Trigger.old, Trigger.new, Trigger.OldMap, Trigger.NewMap); 
+        }
+        /* DELETE */
+        if (Trigger.isDelete) {
+            handler.onBeforeDelete(Trigger.old, Trigger.oldMap); 
+        }
+    } else {
+        /* INSERT */
+        if (Trigger.isInsert) {
+            handler.onAfterInsert(Trigger.new, Trigger.newMap); 
+        }
+        /* UPDATE */
+        if (Trigger.isUpdate) {
+            handler.onAfterUpdate(Trigger.old, Trigger.new, Trigger.oldMap, Trigger.newMap); 
+        }
+        /* DELETE */
+        if (Trigger.isDelete) {
+            handler.onAfterDelete(Trigger.old, Trigger.oldMap); 
+        }
+        /* UNDELETE */
+        if (Trigger.isUndelete) {
+            handler.onAfterUndelete(Trigger.new); 
+        }
+    }
+}
 
-	public with sharing class Handler_Lead {
+public with sharing class Handler_Lead {
 
-		private static Set<Id> processedIds;  
-	    private Boolean isExecuting;
+	private static Set<Id> processedIds;  
+    private Boolean isExecuting;
 
-	    public Handler_Lead(Boolean isExecuting){
-	        this.isExecuting = isExecuting; 
-	        if (processedIds == null) {
-	            processedIds = new Set<Id>();
-	        }
-	    }
+    public Handler_Lead(Boolean isExecuting){
+        this.isExecuting = isExecuting; 
+        if (processedIds == null) {
+            processedIds = new Set<Id>();
+        }
+    }
 
-	    public void onBeforeInsert(List<Opportunity> triggerNew) {
+    public void onBeforeInsert(List<Opportunity> triggerNew) {
 
-	    }
-	    
-	    public void onBeforeUpdate(List<Opportunity> triggerOld , List<Opportunity> triggerNew , Map<Id,Opportunity> triggerOldMap , Map<Id,Opportunity> triggerNewMap) {
-	        
-	    }
+    }
+    
+    public void onBeforeUpdate(List<Opportunity> triggerOld , List<Opportunity> triggerNew , Map<Id,Opportunity> triggerOldMap , Map<Id,Opportunity> triggerNewMap) {
+        
+    }
 
-	    public void onBeforeDelete(List<Opportunity> triggerOld , Map<Id,Opportunity> triggerOldMap) {
-	    }
+    public void onBeforeDelete(List<Opportunity> triggerOld , Map<Id,Opportunity> triggerOldMap) {
+    }
 
-	    public void onAfterInsert(List<Opportunity> triggerNew , Map<Id,Opportunity> triggerNewMap) {  
-	    }
+    public void onAfterInsert(List<Opportunity> triggerNew , Map<Id,Opportunity> triggerNewMap) {  
+    }
 
-	    public void onAfterUpdate(List<Opportunity> triggerOld , List<Opportunity> triggerNew , Map<Id,Opportunity> triggerOldMap , Map<Id,Opportunity> triggerNewMap) {
-	        if (mustBeExecuted(triggerNewMap.keySet())) {
-	         	transferMessagesLeadToAccount();   
-	        }
-	    }
+    public void onAfterUpdate(List<Opportunity> triggerOld , List<Opportunity> triggerNew , Map<Id,Opportunity> triggerOldMap , Map<Id,Opportunity> triggerNewMap) {
+        if (mustBeExecuted(triggerNewMap.keySet())) {
+         	transferMessagesLeadToAccount();   
+        }
+    }
 
-	    public void onAfterDelete(List<Opportunity> triggerOld , Map<Id,Opportunity> triggerOldMap) {}
+    public void onAfterDelete(List<Opportunity> triggerOld , Map<Id,Opportunity> triggerOldMap) {}
 
-	    public void onAfterUndelete(List<Opportunity> triggerNew) {}
+    public void onAfterUndelete(List<Opportunity> triggerNew) {}
 
-	    private Boolean mustBeExecuted(Set<Id> ids){
-	        if (Trigger.isBefore) {
-	            if (processedIds.containsAll(ids)) {
-	                return false; 
-	            } else {
-	                return true;  
-	            } 
-	        } else {
-	            if (!processedIds.containsAll(ids)) {
-	                processedIds.addAll(ids); 
-	                return true;  
-	            } else {
-	                return false; 
-	            }
-	        } 
-	    }
+    private Boolean mustBeExecuted(Set<Id> ids){
+        if (Trigger.isBefore) {
+            if (processedIds.containsAll(ids)) {
+                return false; 
+            } else {
+                return true;  
+            } 
+        } else {
+            if (!processedIds.containsAll(ids)) {
+                processedIds.addAll(ids); 
+                return true;  
+            } else {
+                return false; 
+            }
+        } 
+    }
 
-	    private static void transferMessagesLeadToAccount() {
-	    	// Do transfer messages here according to your needs
-	    }
-	    
-	}
+    private static void transferMessagesLeadToAccount() {
+    	// Do transfer messages here according to your needs
+    }
+    
+}
 ```
 
-Lastly let's design a simple page that will display the contents of the chat and the ability to send a message.
+Lastly let's design a simple page that will display the contents of the chat and give us the ability to send a message.
 ```html
 	<apex:page controller="WhatsAppController">
 	    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
