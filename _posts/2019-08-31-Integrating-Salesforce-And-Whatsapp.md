@@ -20,13 +20,13 @@ In this example we'll be using existing back office as part of the integration w
 
 For this tutorial I am assuming that you have some experience with Salesforce, Salesforce's APEX, have Salesforce Enterprise edition and using Google Chrome browser.
 
-Let's get started.
+##Let's get started.
 
 Here's the general project overview:
 ![IMG1]({{site.url}}{{site.baseurl}}/pictures/31-08-2019/Whatsapp Overview.png)
 
 
-## What are the options to integrate with Whatsapp?
+##What are the options to integrate with Whatsapp?
 
 	Facebook's Whatsapp has made available several options for businesses depending on their size and needs. 
 
@@ -36,7 +36,7 @@ Here's the general project overview:
 
 	You can start using Waboxapp (https://www.waboxapp.com) for free up to 100 messages a month to see if it work for you. Price for using this service goes up when you start sending more messages. 
 
-## Setting up objects and fields.
+##Setting up objects and fields.
 
 	For our requirements we'll create the following objects and fields:
 
@@ -48,7 +48,7 @@ Here's the general project overview:
 			- Relationship to the object that we'll be using to exchange messages. In this example we'll be linking the message to both Lead and Account. This relationship must be set according to your requirements.
 
 
-## Now let's create the classes. 
+##Now let's create the classes. 
 
 	These should be expanded and changed according to your requirements.
 
@@ -391,5 +391,5 @@ Here's the general project overview:
 	```		
 
 
-##	Waboxapp extention for Chrome 
+##Waboxapp extention for Chrome 
 
