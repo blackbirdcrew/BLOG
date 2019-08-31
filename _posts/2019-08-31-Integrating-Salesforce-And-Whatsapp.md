@@ -28,7 +28,7 @@ Facebook's Whatsapp has made available several options for businesses depending 
 
 For small buisinesses WhatsApp has provided the [WhatsApp Business App](https://www.whatsapp.com/business). With it you can interact with your customers and have a way to sort and automate responces. It's a great option, however if we want to be able to customize message content, automate and dynamically change the message throught Salesforce we'll need to look at the other provided option.
 
-For medium and large businesses Facebook has provided a directory of registered partners and [their](https://www.facebook.com/business/partner-directory/search?platforms=whatsapp&solution_type=messaging) solutions. In this tutorial we'll be looking at Weboxapp as the consultancy that is integrated with WhatsApp. There are many consultancies to choose from and the integration and result will vary depending on your choice.
+For medium and large businesses Facebook has provided a directory of [registered partners](https://www.facebook.com/business/partner-directory/search?platforms=whatsapp&solution_type=messaging) and their solutions. In this tutorial we'll be looking at Weboxapp as the consultancy that is integrated with WhatsApp. There are many consultancies to choose from and the integration and result will vary depending on your choice.
 
 You can start using [Waboxapp](https://www.waboxapp.com) for free up to 100 messages a month to see if it work for you. Price for using this service goes up when you start sending more messages. 
 
