@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  "Integrating Whatsapp using third party API"
+title:  "Integrate Salesforce with Whatsapp using third party API"
 date:   2019-08-31 11:00:00 -0800
 author: Anton Solomin
 categories: Salesforce, Integration
@@ -26,13 +26,15 @@ Let's get started.
 
 Facebook's Whatsapp has made available several options for businesses depending on their size and needs. 
 
-For small buisinesses WhatsApp has provided the WhatsApp Business App (https://www.whatsapp.com/business). With it you can interact with your customers and have a way to sort and automate responces. It's a great option, however if we want to be able to customize message content, automate and dynamically change the message throught Salesforce we'll need to look at the other provided option.
+For small buisinesses WhatsApp has provided the [WhatsApp Business App](https://www.whatsapp.com/business). With it you can interact with your customers and have a way to sort and automate responces. It's a great option, however if we want to be able to customize message content, automate and dynamically change the message throught Salesforce we'll need to look at the other provided option.
 
-For medium and large businesses Facebook has provided a directory of registered partners and their solutions. (https://www.facebook.com/business/partner-directory/search?platforms=whatsapp&solution_type=messaging). In this tutorial we'll be looking at Weboxapp as the consultancy that is integrated with WhatsApp. There are many consultancies to choose from and the integration and result will vary depending on your choice.
+For medium and large businesses Facebook has provided a directory of registered partners and [their](https://www.facebook.com/business/partner-directory/search?platforms=whatsapp&solution_type=messaging) solutions. In this tutorial we'll be looking at Weboxapp as the consultancy that is integrated with WhatsApp. There are many consultancies to choose from and the integration and result will vary depending on your choice.
 
-You can start using Waboxapp (https://www.waboxapp.com) for free up to 100 messages a month to see if it work for you. Price for using this service goes up when you start sending more messages. 
+You can start using [Waboxapp](https://www.waboxapp.com) for free up to 100 messages a month to see if it work for you. Price for using this service goes up when you start sending more messages. 
 
-Here's the general project overview. As you can see it very simple. We send a message then update the message status once we receive the result from Waboxapp.
+## General project overview. 
+
+As you can see it fairly simple. We send a message then update the message status once we receive the result from Waboxapp.
 ![IMG1]({{site.url}}{{site.baseurl}}/pictures/31-08-2019/Whatsapp Overview.png)
 
 ## Setting up objects and fields.
