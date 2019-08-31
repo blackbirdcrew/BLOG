@@ -13,49 +13,46 @@ In this tutorial, we’ll set up a Salesforce to Whatsapp integration using a th
 
 
 We'll need a utility class for our needs
+```java
+public class WhatsAppUtilities {
 
-	```java
-
-		public class WhatsAppUtilities {
+    public static String sendMessage(String message, String strFrom, String strTo, String accountId, String leadId, String cid) {
+        HttpRequest request = WhatsAppUtilities.prepareChatRequest(message, strFrom, strTo, cid);
+        Http http = new Http();
+        HttpResponse response = http.send(request);
+        return response.getStatus();
+    }
     
-		    public static String sendMessage(String message, String strFrom, String strTo, String accountId, String leadId, String cid) {
-		        HttpRequest request = WhatsAppUtilities.prepareChatRequest(message, strFrom, strTo, cid);
-		        Http http = new Http();
-		        HttpResponse response = http.send(request);
-		        return response.getStatus();
-		    }
-		    
-		    @future(callout=true)
-		    public static void sendMessageFuture(String message, String strFrom, String strTo, String accountId, String leadId, String cid) {       
-		        String response = sendMessage(message, strFrom, strTo, accountId, leadId, cid);
-		        if (response == 'OK') {
-		            WhatsAppUtilities.createMessage(message, accountId, leadId, cid);
-		        } else {
-		            /*Expand as needed*/
-		            System.debug('Message not created: ' + response);
-		        }
-		    }
+    @future(callout=true)
+    public static void sendMessageFuture(String message, String strFrom, String strTo, String accountId, String leadId, String cid) {       
+        String response = sendMessage(message, strFrom, strTo, accountId, leadId, cid);
+        if (response == 'OK') {
+            WhatsAppUtilities.createMessage(message, accountId, leadId, cid);
+        } else {
+            /*Expand as needed*/
+            System.debug('Message not created: ' + response);
+        }
+    }
 
-		    public static HttpRequest prepareChatRequest(String message, String strFrom, String strTo, String cid) {
-		        String token = 'SAMPLE'; /*Your token goes here*/
-		        
-		        String url = 'https://www.waboxapp.com/api/send/chat';
-		        url += '?token=' + token;
-		        url += '&uid=' + strFrom.replace('+','');
-		        url += '&to='  + strTo.replace('+','');
-		        url += '&text=' + EncodingUtil.urlEncode(message,'UTF-8');
-		        url += '&custom_uid=' + cid; 
-		        
-		        HttpRequest request = new HttpRequest();
-		        request.setMethod('GET');
-		        request.setEndpoint(url);
-		        return request;
-		    }
+    public static HttpRequest prepareChatRequest(String message, String strFrom, String strTo, String cid) {
+        String token = 'SAMPLE'; /*Your token goes here*/
+        
+        String url = 'https://www.waboxapp.com/api/send/chat';
+        url += '?token=' + token;
+        url += '&uid=' + strFrom.replace('+','');
+        url += '&to='  + strTo.replace('+','');
+        url += '&text=' + EncodingUtil.urlEncode(message,'UTF-8');
+        url += '&custom_uid=' + cid; 
+        
+        HttpRequest request = new HttpRequest();
+        request.setMethod('GET');
+        request.setEndpoint(url);
+        return request;
+    }
 
-		    public static void createMessage(String message, String accountId, String leadId, String cid) {
-		        WhatsAppMessage__c msg = new WhatsAppMessage__c(Account__c = accountId, Lead__c = leadId, Message__c = message, Status__c = 'sent', CID__c = cid);
-		        insert msg;
-		    }    
-		}
-
-	``` 
+    public static void createMessage(String message, String accountId, String leadId, String cid) {
+        WhatsAppMessage__c msg = new WhatsAppMessage__c(Account__c = accountId, Lead__c = leadId, Message__c = message, Status__c = 'sent', CID__c = cid);
+        insert msg;
+    }    
+}
+``` 
