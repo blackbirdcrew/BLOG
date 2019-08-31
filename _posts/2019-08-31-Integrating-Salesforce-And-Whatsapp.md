@@ -14,7 +14,7 @@ In this tutorial, we’ll set up a Salesforce to Whatsapp integration using a th
 
 We'll need a utility class for our needs
 
-	``` JAVA
+	```java
 
 		public class WhatsAppUtilities {
     
