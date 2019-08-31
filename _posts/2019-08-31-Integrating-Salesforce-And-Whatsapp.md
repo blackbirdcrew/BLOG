@@ -26,7 +26,7 @@ Facebook's Whatsapp has made available several options for businesses depending 
 
 For small buisinesses WhatsApp has provided the [WhatsApp Business App](https://www.whatsapp.com/business). With it you can interact with your customers and have a way to sort and automate responces. It's a great option, however if we want to be able to customize message content, automate and dynamically change the message throught Salesforce we'll need to look at the other options.
 
-For medium and large businesses Facebook has provided a directory of [registered partners](https://www.facebook.com/business/partner-directory/search?platforms=whatsapp&solution_type=messaging) and their solutions. In this tutorial we'll be looking at Weboxapp as the consultancy that is integrated with WhatsApp. There are many consultancies to choose from. Obviously the integration stepsd and results will vary depending on the consultancy of your choice. 
+For medium and large businesses Facebook has provided a directory of [registered partners](https://www.facebook.com/business/partner-directory/search?platforms=whatsapp&solution_type=messaging) and their solutions. In this tutorial we'll be looking at Waboxapp as the consultancy that is integrated with WhatsApp. There are many consultancies to choose from. Obviously the integration stepsd and results will vary depending on the consultancy of your choice. 
 
 One of the benefits of Waboxapp is that it provides a sandbox where you can test your integrationg. Furthermore, You can start using [Waboxapp](https://www.waboxapp.com) for free up to 100 messages a month to see if it works for you. [Prices](https://www.waboxapp.com/pricing) for this service are monthly payments that correspond the the volume of messages that use send from all your active accounts. 
 
@@ -36,7 +36,7 @@ One of the benefits of Waboxapp is that it provides a sandbox where you can test
 As you can see it fairly simple.
 1. We get the user input and insert the message in Salesforce.
 1. We make an API request to Waboxapp.
-1. Wabozapp notifies us about the result of the message.
+1. Waboxapp notifies us about the result of the message.
 1. We update the message in Salesforce.
 
 * Also, we do not need to have a back office for this integration, we can build this functionality in Salesforce. *
@@ -376,7 +376,7 @@ Once you are registered and logged in with Waboxapp
 
 ## Waboxapp extention for Chrome 
 
-1. Next step is to install the [Weboxapp](https://chrome.google.com/webstore/detail/waboxapp/mgaecjklgnbkkdfnfpncgnogplnjjcdh) plugin for Chrome.
+1. Next step is to install the [Waboxapp](https://chrome.google.com/webstore/detail/waboxapp/mgaecjklgnbkkdfnfpncgnogplnjjcdh) plugin for Chrome.
 1. Go to phones tab where you'll find your API token.
 1. Click on the icon in Chrome and insert your token. 
 1. Go to [web.whatsapp.com](web.whatsapp.com).
