@@ -41,12 +41,12 @@ As you can see it fairly simple. We send a message then update the message statu
 
 For our requirements we'll create the following objects and fields:
 
-	WhatsAppMessage: 
-	 	- ACK. Picklist with: sent, delivered, read, not sent, sending.
-		- CID. Text 20.
-		- Message or Content. Long Text for the message content. As of whriting this article whatsapp maximum size is 65,536 characters.
-		- Status. Text 20
-		- Relationship to the object that we'll be using to exchange messages. In this example we'll be linking the message to both Lead and Account. This relationship must be set according to your requirements.
+WhatsAppMessage: 
+ 	* ACK. Picklist with: sent, delivered, read, not sent, sending.
+	* CID. Text 20.
+	* Message or Content. Long Text for the message content. As of whriting this article whatsapp maximum size is 65,536 characters.
+	* Status. Text 20
+	* Relationship to the object that we'll be using to exchange messages. In this example we'll be linking the message to both Lead and Account. This relationship must be set according to your requirements.
 
 Change the names and labels if you see fit. 
 
