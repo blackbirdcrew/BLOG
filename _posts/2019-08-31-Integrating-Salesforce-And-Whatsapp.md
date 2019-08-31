@@ -275,11 +275,11 @@ Lastly, let's design a simple page that will display the contents of the chat an
                         <ul class="whatschat">
                             <apex:repeat var="m" value="{!messages}">
                                 <li style="width:100%" id="{!m.Id}">
-                                <div class="{!IF(m.Status__c == "sent","msj", "msj-rta")} macro">                                
+                                <div class="{!IF(m.Status__c == 'sent','msj', 'msj-rta')} macro">                                
                                     <apex:outputText rendered="{!m.Status__c == 'sent'}">
                                         <div class="avatar"><img class="img-circle" style="width:50px;" src="{!m.createdby.FullPhotoUrl}" /></div>
                                     </apex:outputText>
-                                    <div class="text {!IF(m.Status__c == "sent","text-l", "text-r")} ">
+                                    <div class="text {!IF(m.Status__c == 'sent','text-l', 'text-r')} ">
                                         <p>{!m.Message__c}</p>
                                         <p><small>
                                             <apex:outputText value="{0,date,MM'/'dd'/'yyyy hh':'mm a}">
