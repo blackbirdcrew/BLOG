@@ -11,6 +11,7 @@ Introduction
 
 In this tutorial, we’ll set up a Salesforce to Whatsapp integration using a third-party API. Our goal is to be able to send and recieve messages, images and other types of files from Salesforce, store them and to automate the processes. We will also have a general overview of the available options and consider the differences between the native Whatsapp API and third party services.
 
+![IMG1]({{site.url}}{{site.baseurl}}/pictures/31-08-2019/Whatsapp Overview.png)
 
 We'll need a utility class for our needs
 ```apex
