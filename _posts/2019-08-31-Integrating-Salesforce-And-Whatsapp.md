@@ -46,7 +46,7 @@ First, let's create our message object. In this tutorial I'll call it "WhatsApp 
 - Relationship to the object that we'll be using to exchange messages. In this example we'll be linking the message to both Lead and Account. This relationship must be set according to your requirements.
 
 ## Now let's create the Salesforce chat page . 
-First, the controller that provides minimal functionality. Keep in mind that it should be expanded and changed according to your requirements.
+First, the controller that provides minimal functionality. Our goal here is to be able to send and see existing messages that are related to this record. Keep in mind that it should be expanded and changed according to your requirements.
 ```java
 public with sharing class WhatsAppController {
 
@@ -111,7 +111,7 @@ public with sharing class WhatsAppController {
     }
 	}
 ```
-Second is utility class to work with our controller.
+Second is utility class to work with our controller. SendMessageFuture is anotated future so that we are able to use it from a trigger once a lead meets certain criteria, e.g. has phone in correct format.  
 ```java
 public class WhatsAppUtilities {
 
@@ -193,7 +193,8 @@ trigger Lead on Lead (after delete, after insert, after undelete, after update, 
         }
     }
 }
-
+```
+```java
 public with sharing class Handler_Lead {
 
 	private static Set<Id> processedIds;  
@@ -375,7 +376,5 @@ Lastly let's design a simple page that will display the contents of the chat and
 	    </script>
 	</apex:page>
 ```		
-
-
-##Waboxapp extention for Chrome 
+## Waboxapp extention for Chrome 
 
