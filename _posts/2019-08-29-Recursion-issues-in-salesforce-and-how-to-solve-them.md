@@ -2,7 +2,7 @@
 layout: default
 title:  " Recursion issues in salesforce and how to solve them"
 date:   2019-08-29 00:02:00 -0800
-author: Alex Jimenez
+author: Alex Gimenez
 categories: Salesforce
 comments: true
 ---
