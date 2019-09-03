@@ -18,7 +18,7 @@ Leaving more advanced topics on this subject for a second part of the article si
 
  Let’s get started!
 
-### What is a recursion Problem?
+## What is a recursion Problem?
 
 First of all make sure you’re working on a new salesforce environment like a Trailhead Playground to make this test so we avoid any problems with any other existing code or Workflows (this is really relevant).
 
@@ -51,7 +51,7 @@ In order to avoid useless server usage, Salesforce prevents the infinite loops t
 
 If we want more control on Trigger execution, we have to structure our trigger execution, so we should talk first about Trigger Handlers.
 
-### What is a Trigger Handler and how to implement it
+## What is a Trigger Handler and how to implement it
 
 In the first example we saw some code in our Account trigger, but this doesn’t follow Salesforce best practices since salesforce clearly states that you shouldn’t create more than 1 trigger per object, therefore if we write multiple triggers logic inside one trigger this would be committing a BLOB antipattern or also known as GOD class. Which basically means we’re storing everything regardless of its functionality in the same place and this goes against software development best practices (if you want to read more about it, click [there] (https://en.wikipedia.org/wiki/Separation_of_concerns)).
 
@@ -155,7 +155,7 @@ Even if it seems that isn’t directly related to recursion, following best prac
 
 But this code still falls into the same pitfall than the first example provided. So let’s work on a solution so we can execute our trigger.
 
-### How to establish recursion control in a simple way.
+## How to establish recursion control in a simple way.
 
 So, How can we solve this recurrence loop scenario? Well, this is one of the first intuitive solutions we can find out:
 
@@ -209,7 +209,7 @@ But that’s not the only issue, since code runs in chunks of 200 records this s
 **Advantages**: Really fast and easy to implement.
 **Disadvantages**: Lack of flexibility, doesn’t work for more than 200 records.
 
-### Why order of execution matters
+## Why order of execution matters
 
 To exemplify the importance of controlling the execution order two brief examples, one where we execute first AccountTriggerHelper.method1 and other where we execute method2.
 
@@ -233,7 +233,7 @@ Then if we swap the order on summoning the Helper methods on the Handler we get 
 
 12:56:20:293 USER_DEBUG [7]|DEBUG|Account:{AccountSource=Affiliate, AnnualRevenue=30001, Rating=A, Id=0011n00002Bz0AOAAZ}
 
-### Another simple way of preventing recursion
+## Another simple way of preventing recursion
 
 One of the first things we’ve got to keep in mind is to establish conditions to avoid entering again in the trigger **if possible. We will mostly exemplify scenarios where you cannot do it by just establishing the modification rules that stop the recursion.**
 
