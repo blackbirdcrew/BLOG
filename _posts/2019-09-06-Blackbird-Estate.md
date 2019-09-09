@@ -55,6 +55,8 @@ Esta herramienta permite, una vez se dispone de un resultado de búsqueda, añad
 
 Dentro de este objeto, tenemos acceso de una manera muy intuitiva a toda la información básica del cliente, así como su nombre, su dirección, su sitio web, su teléfono, etc.; y también al registro de la actividad que se ha tenido con él, como emails, llamadas, tareas, etc.
 
+![Perfil cliente]({{site.url}}{{site.baseurl}}/pictures/06-09-2019/Cliente.png)
+
 En cuanto a desarrollos específicos para este sector, como hemos comentado antes, se ha habilitado el acceso desde la misma ficha o página del cliente a una lista con aquellos inmuebles que le interesan y aquellos que ya no; también a un histórico de todas las búsquedas que ha realizado a través de la herramienta ‘Búsquedas’ y a sus resultados.
 
 ![Perfil cliente]({{site.url}}{{site.baseurl}}/pictures/06-09-2019/Perfil cliente inmobiliaria Salesforce.png)
