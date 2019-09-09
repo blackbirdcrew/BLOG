@@ -27,6 +27,8 @@ Desde el registro de un inmueble, es posible añadir imágenes, ordenarlas fáci
 
 Otras funcionalidades a destacar de nuestra integración con el sector son, por un lado, un componente en el que podemos ver en qué zona se sitúa en un mapa de Google Maps; y por otro lado, la posibilidad de hacer tasaciones desde la misma página (en base al histórico de propiedades vendidas o alquiladas).
 
+![Tasacion inmuebles Salesforce]({{site.url}}{{site.baseurl}}/pictures/06-09-2019/Tasacion inmbueble Salesforce.png)
+
 Los inmuebles que más gusten se pueden seleccionar y es posible realizar ciertas acciones con ellos, así como enviar por email al cliente, generar un PDF con ellos, o añadirlos a la lista de inmuebles por los que se ha interesado un cliente.
 
 ![Inmuebles favoritos]({{site.url}}{{site.baseurl}}/pictures/06-09-2019/Inmuebles favoritos Salesforce.png)
