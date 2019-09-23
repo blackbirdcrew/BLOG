@@ -46,7 +46,7 @@ Nota: **En esta entrada de blog nos centraremos en la creación de macros en Lig
 El primer punto a tener en cuenta para la creación y configuración de macros, son los permisos de los usuarios, hay que tener claro que:
 - Para ver macros deberemos dar el permiso al usuario de sólo lectura.
 
-![Read Only]({{site.url}}{{site.baseurl}}/pictures/20-09-2019/only read.png)
+![Read Only]({{site.url}}{{site.baseurl}}/pictures/20-09-2019/only read.PNG)
 
 - Para crear y editar macros, como en cualquier otro objeto, deberemos añadir los permisos para crear y editar macros
 
