@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "Macros en Salesforce"
-date:   2019-07-10 00:02:00 -0800
+date:   2019-09-20 00:02:00 -0800
 author: Mouty Le Monnier
 categories: Salesforce Macros
 comments: true
