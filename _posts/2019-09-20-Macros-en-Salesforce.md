@@ -50,11 +50,11 @@ El primer punto a tener en cuenta para la creación y configuración de macros, 
 
 - Para crear y editar macros, como en cualquier otro objeto, deberemos añadir los permisos para crear y editar macros
 
-![Crear y editar]({{site.url}}{{site.baseurl}}/pictures/20-09-2019/crear y editar.png)
+![Crear y editar]({{site.url}}{{site.baseurl}}/pictures/20-09-2019/crear y editar.PNG)
 
 - Para gestionar macros irreversibles existe un checkbox especial en los permisos administrativos:
 
-![Manage macros]({{site.url}}{{site.baseurl}}/pictures/20-09-2019/manage macros.png)
+![Manage macros]({{site.url}}{{site.baseurl}}/pictures/20-09-2019/manage macros.PNG)
 
 Una vez gestionados los permisos, y habiendo añadido, como hemos visto anteriormente, la función macros a la barra de utilidades, podemos proceder a crear una macro. A continuación se detallan los pasos a seguir para crearla.
 
@@ -70,7 +70,7 @@ Para añadir lógica podemos poner condiciones complementarias (por ejemplo: que
 
 A continuación se nos muestra la página que se abre en Salesforce dónde de una manera muy intuitiva se pueden configurar las Instrucciones que queremos que ejecute la macro como la lógica interna que ha de cumplir para que se ejecute.
 
-![Lógica e instrucciones]({{site.url}}{{site.baseurl}}/pictures/20-09-2019/logica e instrucciones.png)
+![Lógica e instrucciones]({{site.url}}{{site.baseurl}}/pictures/20-09-2019/logica e instrucciones.PNG)
 
 En este ejemplo le damos la instrucción de enviar un correo electrónico, en la que podemos estipular que concepto se envía, el template que enviaremos e incluso podremos añadir archivos adjuntos.
 
