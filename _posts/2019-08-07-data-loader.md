@@ -33,7 +33,7 @@ Antes de empezar hay que tener en cuenta dos cosas:
 
 <br/>
 
-Cuando el proceso de instalación termine, nos dispondremos a instalar Data Loader desde el [siguiente](https://aecoc.my.salesforce.com/dwnld/DataLoader/dataloader_mac.zip) enlace. 
+Cuando el proceso de instalación termine, nos dispondremos a instalar Data Loader desde configuración poniendo en la búsqueda rápida Cargador de Datos. Allí podremos seleccionar si lo descargamos para Windows o para Mac OS
 
 Una vez descargado, descomprimimos el zip y ejecutamos el fichero install.command. Nos preguntará si queremos poner un acceso directo a la carpeta de aplicaciones y al escritorio, y en ambos casos diremos que **sí**. 
 
