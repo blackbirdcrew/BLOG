@@ -118,8 +118,6 @@ There are hundreds of possibilities to get new Leads using a custom Landing Page
 
 <h3>Look and Feel section</h3> We must choose:
 
-<br/>
-
 - **Layout Template**, which will define the styling of the form (we will cover this topic in a future blog post)
 
 - **Submit Button Text**: The call-to-action that will appear in the button
