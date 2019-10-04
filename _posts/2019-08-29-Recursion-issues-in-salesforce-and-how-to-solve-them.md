@@ -38,8 +38,19 @@ List<Account> accountsToUpdate = new List<Account> ();
 
 If we try to update any account, we will get something like this:
 
+```
 **Line: 2, Column: 1
-System.DmlException: Update failed. First exception on row 0 with id 0011n00002AzmLlAAJ; first error: CANNOT_INSERT_UPDATE_ACTIVATE_ENTITY, onAccount: execution of AfterUpdate caused by: System.DmlException: Update failed. First exception on row 0 with id 0011n00002AzmLlAAJ; first error: CANNOT_INSERT_UPDATE_ACTIVATE_ENTITY, onAccount: maximum trigger depth exceeded Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate: [] Trigger.onAccount: line 7, column 1: []**
+System.DmlException: Update failed. First exception on row 0 with id 0011n00002AzmLlAAJ;
+first error: CANNOT_INSERT_UPDATE_ACTIVATE_ENTITY, onAccount: execution of AfterUpdate 
+caused by: System.DmlException: Update failed. First exception on row 0 with id 0011n00002AzmLlAAJ;
+first error: CANNOT_INSERT_UPDATE_ACTIVATE_ENTITY, onAccount: maximum trigger depth exceeded Account
+trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate
+Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate
+Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate
+Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate
+Account trigger event AfterUpdate Account trigger event AfterUpdate Account trigger event AfterUpdate
+Account trigger event AfterUpdate: [] Trigger.onAccount: line 7, column 1: []**
+```
 
 They key part is the “maximum trigger depth exceeded Account ” message.
 
