@@ -58,7 +58,7 @@ There are hundreds of possibilities to get new Leads using a custom Landing Page
 
 ![Privacy Policy]({{site.url}}{{site.baseurl}}/pictures/27-09-2019/02.png)
 
-2. **Prospect field**: Which Pardot field must the form submitted information map to. 
+[2] **Prospect field**: Which Pardot field must the form submitted information map to. 
 
    Trick: if you click ‘Load Default Data’ button, in case of checkbox, dropdown or radio button, the tab ‘Values’ will be prefilled with the values defined when the Pardot field was created or last updated. These values can be adjusted manually, depending on the constraints given for this specific Form.
    
