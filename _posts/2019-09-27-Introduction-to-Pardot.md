@@ -50,7 +50,7 @@ There are hundreds of possibilities to get new Leads using a custom Landing Page
 
 ![Basic Tab]({{site.url}}{{site.baseurl}}/pictures/27-09-2019/01.png)
 
-1. **Label**: The name of the field as it will be shown to final visitor. 
+- **Label**: The name of the field as it will be shown to final visitor. 
 
    Trick: it can include a hyperlink! This is really interesting for GDPR purposes, where you might need to include a link to the ‘Privacy policy, for instance’.
    
@@ -58,7 +58,7 @@ There are hundreds of possibilities to get new Leads using a custom Landing Page
 
 ![Privacy Policy]({{site.url}}{{site.baseurl}}/pictures/27-09-2019/02.png)
 
-[2] **Prospect field**: Which Pardot field must the form submitted information map to. 
+- **Prospect field**: Which Pardot field must the form submitted information map to. 
 
    Trick: if you click ‘Load Default Data’ button, in case of checkbox, dropdown or radio button, the tab ‘Values’ will be prefilled with the values defined when the Pardot field was created or last updated. These values can be adjusted manually, depending on the constraints given for this specific Form.
    
@@ -68,11 +68,11 @@ There are hundreds of possibilities to get new Leads using a custom Landing Page
 
 ![Values]({{site.url}}{{site.baseurl}}/pictures/27-09-2019/03.png)
 
-3. **Type**: Depending on the type selected (checkbox, dropdown or radio button), you can adjust the values displayed in the ‘Values’ tab.
+- **Type**: Depending on the type selected (checkbox, dropdown or radio button), you can adjust the values displayed in the ‘Values’ tab.
 
-4. **Data format**: If you want to validate some specific input format (only accepting a number format, only accepting email format, only valid email format…), you can select the condition to be met by the input value.
+- **Data format**: If you want to validate some specific input format (only accepting a number format, only accepting email format, only valid email format…), you can select the condition to be met by the input value.
 
-5. **Required**: If marked to true, the visitor will not be able to submit the form without a valid input in the current field.
+- **Required**: If marked to true, the visitor will not be able to submit the form without a valid input in the current field.
 
 <br/>
 
@@ -80,13 +80,13 @@ There are hundreds of possibilities to get new Leads using a custom Landing Page
 
 ![Advanced Tab]({{site.url}}{{site.baseurl}}/pictures/27-09-2019/04.png)
 
-1. **Error message**: You can customize which ‘Error message’ should see the submitter if the field is left empty or an invalid value is input.
+- **Error message**: You can customize which ‘Error message’ should see the submitter if the field is left empty or an invalid value is input.
 
-2. **Always display even if previously completed**: If you select this checkbox, this field will always be shown, even if the submitter had filled it before.
+- **Always display even if previously completed**: If you select this checkbox, this field will always be shown, even if the submitter had filled it before.
 
    By default, to avoid the Prospect filling again the same information in different forms when using Pardot Forms, if the submitter is using a cookied browser (ie. he has previously submitted a Pardot Form from the same browser) and the field being added to the Form was already completed, it will not be displayed in the Form version for this specific submitter. 
 
-3. **Do not prefill**: If you select this checkbox, this field will not be be prefilled with previous value.
+- **Do not prefill**: If you select this checkbox, this field will not be be prefilled with previous value.
 
    By default, if you add a field to be shown even if the field was previously completed (as described in the previous point, the field will appear prefilled with the current value. 
 
@@ -94,7 +94,7 @@ There are hundreds of possibilities to get new Leads using a custom Landing Page
 
    Exception: Text Area fields will never be prefilled, even if the checkbox is left unselected.
 
-4. **Maintain the initial value upon subsequent form submissions**: If you select this checkbox, the data submitted in previous form completions will not be overwritten.
+- **Maintain the initial value upon subsequent form submissions**: If you select this checkbox, the data submitted in previous form completions will not be overwritten.
 
    Example: If a cookied prospect with email ‘cookied@prospect.com’ submits a second form using as email ‘cookiedupdated@prospect.com’, it does not override the existing Prospect information, but creates a new Prospect.
 
@@ -104,13 +104,13 @@ There are hundreds of possibilities to get new Leads using a custom Landing Page
 
 ![Progressive Tab]({{site.url}}{{site.baseurl}}/pictures/27-09-2019/05.png)
 
-1. **Show this field only if the prospect already has data in the following field(s)**: If you select this checkbox and select the corresponding fields, the field currently being set up will only appear if the selected fields in this tab are already filled in the Prospects record.
+- **Show this field only if the prospect already has data in the following field(s)**: If you select this checkbox and select the corresponding fields, the field currently being set up will only appear if the selected fields in this tab are already filled in the Prospects record.
 
    We want to avoid never-ending forms with dozens of fields that could discourage the visitor from filling and submitting it. It is better to take advantage of this Pardot functionality, so that this field being currently set up, will only appear in the visitor form if the cookied Prospect has previously filled the mentioned fields in this tab. 
 
    We will prioritize gathering the other fields (both using this form or any other Pardot form) and we will only ask for this extra segmentation details after the other information is already in our records.
 
-2. **Dependent**: Display other fields in this form based on the value of this field: If you select this checkbox and the field input value from the visitor equals the criteria defined in this tab, the field(s) added in this tab will be shown to the visitor.
+- **Dependent**: Display other fields in this form based on the value of this field: If you select this checkbox and the field input value from the visitor equals the criteria defined in this tab, the field(s) added in this tab will be shown to the visitor.
 
    We want to avoid showing unnecessary fields. If a specific field only applies to Prospects who select a specific value in another field, we can use this functionality.
 
@@ -120,21 +120,21 @@ There are hundreds of possibilities to get new Leads using a custom Landing Page
 
 <br/>
 
-1. **Layout Template**, which will define the styling of the form (we will cover this topic in a future blog post)
+- **Layout Template**, which will define the styling of the form (we will cover this topic in a future blog post)
 
-2. **Submit Button Text**: The call-to-action that will appear in the button
+- **Submit Button Text**: The call-to-action that will appear in the button
 
 ![Submit Button Text]({{site.url}}{{site.baseurl}}/pictures/27-09-2019/06.png)
 
-3. **Above Form**: The description appearing before form fields
+- **Above Form**: The description appearing before form fields
 
-4. **Below Form**: The description appearing after form fields
+- **Below Form**: The description appearing after form fields
 
 ![Below Form]({{site.url}}{{site.baseurl}}/pictures/27-09-2019/07.png)
 
-5. **Styles**: Some of the CSS styling can be configured without coding (eg. you can define if a * symbol should appear next to required fields)
+- **Styles**: Some of the CSS styling can be configured without coding (eg. you can define if a * symbol should appear next to required fields)
 
-6. **Advanced**:
+- **Advanced**:
    1. Kiosk/Data Entry Mode: Do not cookie browser as submitted prospect → This functionality should be used if the browser (from where the form will be submitted) will not be a final user device (eg. registration desktop computer in a trade fair)
    
    2. Include "Not you?" link to allow visitors to reset the form → Allowing a way out if the browser was previously used to submit data for another Prospect. When clicking this option, the visitor will be able to fill the Form from scratch (without being linked to the previous cookied Prospect in that browser)
@@ -143,16 +143,16 @@ There are hundreds of possibilities to get new Leads using a custom Landing Page
 
 ## Second stop: build the Landing Page
 
-1. **Name**: Which name will identify this Landing, where will the asset be stored and which campaign will be associated to (if the first interaction of a new Prospect is this Landing, the specified campaign will be assigned to the newly created Prospect).
-2. **Select Form**: We must select which Pardot Form we want to use.
-3. **Content Layout**: We must choose between ‘My Layout Templates’ (created previously) or ‘Stock templates’ (basic WYSIWYG editor).
-4. **Landing Page Content**: Depending whether we have selected ‘My Layout Templates’ or ‘Stock Templates’, we will be able to perform differently here. 
+- **Name**: Which name will identify this Landing, where will the asset be stored and which campaign will be associated to (if the first interaction of a new Prospect is this Landing, the specified campaign will be assigned to the newly created Prospect).
+- **Select Form**: We must select which Pardot Form we want to use.
+- **Content Layout**: We must choose between ‘My Layout Templates’ (created previously) or ‘Stock templates’ (basic WYSIWYG editor).
+- **Landing Page Content**: Depending whether we have selected ‘My Layout Templates’ or ‘Stock Templates’, we will be able to perform differently here. 
    In the first case, we will be able to modify all the editable areas (if defined in the Layout Template as ‘pardot-region’).
    While in the second case, we will be able to adjust and add new elements using the WYSIWYG editor (be careful, not responsive format!).
    
 ![Landing Page Content]({{site.url}}{{site.baseurl}}/pictures/27-09-2019/08.png)
    
-5. **Confirm & Save**: Review the details and see the landing page preview.
+- **Confirm & Save**: Review the details and see the landing page preview.
 
 ___
 
