@@ -3,7 +3,7 @@ layout: default
 title:  "Integrating Salesforce with Whatsapp using third party API"
 date:   2019-08-31 11:00:00 -0800
 author: Anton Solomin
-categories: Salesforce, Integration
+categories: Salesforce Integration
 comments: true
 ---
 
