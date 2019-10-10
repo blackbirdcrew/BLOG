@@ -262,9 +262,9 @@ public abstract class AWS {
 }
 ```
 
-When implementing our class we will be initializing the parameters in the abstract function *init()*. There we will also calculate the signing key showed in the first part of Step 3 of the signature schema.
+When implementing our class we will be initializing the parameters in the abstract function `init()`. There we will also calculate the signing key showed in the first part of Step 3 of the signature schema.
 
-To perform the request we will then just call the “*sendRequest()*” method.
+To perform the request we will then just call the “`sendRequest()`” method.
 
 The endpoint varies depending on the requested service. S3, for example, does not use region while SNS does use it. Check the documentation of the service when creating a new service integration.
 
@@ -350,7 +350,7 @@ public without sharing class AWS_SNS extends AWS{
     }
 }
 ```
-In the “*Init()*” method we will initialize the AWS variables do our request can be created. If any other class or method within this class needs to perform a different signed call to AWS, just modify the parameters in this method.
+In the “Init()” method we will initialize the AWS variables do our request can be created. If any other class or method within this class needs to perform a different signed call to AWS, just modify the parameters in this method.
 
 When called with “*subscribeToTopic()*” it should generate and send a subscription request like this:
 ```javascript
