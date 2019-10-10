@@ -49,6 +49,7 @@ There are some things to note about the Canonical Request:
 - Canonical Headers: should only be Host but may require the content type too. Also, every header is to be put in a new line.
 - Signed Headers: the same headers present in Canonical headers separated by semicolons.
 - If there’s no payload (e.g., for a subscription request) it should be set to an empty string, but it can also be set to “UNSIGNED-PAYLOAD”.
+
 ## AWS Abstract Class
 First of all we will create an abstract class for AWS connections, which almost always require AWS v4 signing. This is partially based on this [gist](https://gist.github.com/brianmfear/92cf05807ac4becbd21f) from Brian Fear.
 ```javascript
@@ -260,11 +261,13 @@ public abstract class AWS {
 	}
 }
 ```
+
 When implementing our class we will be initializing the parameters in the abstract function *init()*. There we will also calculate the signing key showed in the first part of Step 3 of the signature schema.
 
 To perform the request we will then just call the “*sendRequest()*” method.
 
 The endpoint varies depending on the requested service. S3, for example, does not use region while SNS does use it. Check the documentation of the service when creating a new service integration.
+
 ## Implementing out class
 The implementations of this class will be something like this:
 ```javascript
