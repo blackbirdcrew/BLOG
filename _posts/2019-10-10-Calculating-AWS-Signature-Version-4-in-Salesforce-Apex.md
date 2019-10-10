@@ -347,9 +347,9 @@ public without sharing class AWS_SNS extends AWS{
     }
 }
 ```
-In the “Init()” method we will initialize the AWS variables do our request can be created. If any other class or method within this class needs to perform a different signed call to AWS, just modify the parameters in this method.
+In the “*Init()*” method we will initialize the AWS variables do our request can be created. If any other class or method within this class needs to perform a different signed call to AWS, just modify the parameters in this method.
 
-When called with “subscribeToTopic()” it should generate and send a subscription request like this:
+When called with “*subscribeToTopic()*” it should generate and send a subscription request like this:
 ```javascript
 https://sns.eu-central-1.amazonaws.com/?Action=Subscribe
 &TopicArn=arn%3Aaws%3Asns%3Aus-west-2%3A123456789012%3AMyTopic
