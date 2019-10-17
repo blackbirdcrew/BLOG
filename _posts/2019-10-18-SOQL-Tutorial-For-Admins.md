@@ -97,7 +97,7 @@ This clause precedes the condition we are establishing. It can contain:
   
   Let's see some examples:
 
-**Where example 1**: We want our results to show us all the records that were last modified before the 16th of October 2019.
+We want our results to show us all the records that were last modified before the 16th of October 2019.
   
 `SELECT Name, BillingCity, LastModifiedDate FROM Account WHERE LastModifiedDate < 2019-10-16T00:00:00.000Z`
 
@@ -106,7 +106,7 @@ This clause precedes the condition we are establishing. It can contain:
 As we can see, the result is the same as before, but excluding the Accounts that were modified on the 16th of October 2019, to have their Billing City set as Barcelona.
 
 
-**Where example 2**: We want our results to show us all the records that have Barcelona set as their Billing City
+We want our results to show us all the records that have Barcelona set as their Billing City
 
 `SELECT Name, BillingCity, LastModifiedDate FROM Account WHERE BillingCity = ‘Barcelona’`
 
@@ -120,7 +120,7 @@ This clause precedes:
 - `NULLS FIRST` or `NULLS LAST` (optional): whether the records with a null value in that field appear first or last
 
 
-**Order by example 1**: We want our results to be sorted by the Account name, in ascending order
+We want our results to be sorted by the Account name, in ascending order
 
 `SELECT Name, BillingCity, LastModifiedDate FROM Account ORDER BY Name ASC`
 
@@ -128,7 +128,7 @@ This clause precedes:
 
 
 
-**Order by example 2**: We want our results to be sorted by the Billing City, in descending order and placing records with a null value in Billing City first
+We want our results to be sorted by the Billing City, in descending order and placing records with a null value in Billing City first
 
 `SELECT Name, BillingCity, LastModifiedDate FROM Account ORDER BY BillingCity DESC NULLS FIRST`
 
@@ -140,7 +140,7 @@ This clause precedes:
 This clause precedes the number of records we want to be returned at maximum in the result.
 
 
-**Limit example 1**: We want our result to show us the first five records that don’t have Barcelona as Billing City
+We want our result to show us the first five records that don’t have Barcelona as Billing City
 
 `SELECT Name, BillingCity, LastModifiedDate FROM Account WHERE BillingCity != 'Barcelona' LIMIT 5`
 
@@ -151,7 +151,7 @@ This clause precedes the number of records we want to be returned at maximum in 
 This clause precedes the starting row for our data retrieval.
 
 
-**Offset example 1**: We want our results to show us the first five records that don’t have Barcelona as Billing City, skipping the first two rows.
+We want our results to show us the first five records that don’t have Barcelona as Billing City, skipping the first two rows.
 
 `SELECT Name, BillingCity, LastModifiedDate FROM Account WHERE BillingCity != 'Barcelona' LIMIT 5 OFFSET 2`
 
