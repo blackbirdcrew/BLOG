@@ -160,4 +160,6 @@ This clause precedes the starting row for our data retrieval.
 
 ![Conclusion example 1]({{site.url}}{{site.baseurl}}/pictures/18-10-2019/08.png)
 
-If we're able to write SOQL statements combining all these clauses and operators, we can retrieve data in a fairly optimized way. However, SOQL can get pretty more complicated than what we've learned in this post, and there will be future posts diving deeper into SOQL.
+If we're able to write SOQL statements combining all these clauses and operators, we can retrieve data in a fairly optimized way. 
+
+However, SOQL can get pretty more complicated than what we've learned in this post, and there will be future posts diving deeper into SOQL.
