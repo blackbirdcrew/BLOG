@@ -114,7 +114,9 @@ This clause precedes:
 - API name of the field we want to sorting to be based on
 - `ASC` or `DESC`: whether it’s applied in an ascending or descending order
 - `NULLS FIRST` or `NULLS LAST` (optional): whether the records with a null value in that field appear first or last
+
 ---
+
 **Order by example 1**: We want our results to be sorted by the Account name, in ascending order
 
 `SELECT Name, BillingCity, LastModifiedDate FROM Account ORDER BY Name ASC`
