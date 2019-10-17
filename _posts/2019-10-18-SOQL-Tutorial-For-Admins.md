@@ -22,6 +22,7 @@ Note: *The examples used in this blog post are taken out of a Free Developer org
 - *Dickenson plc*
 - *GenePoint*
 
+---
 # What can an Admin use SOQL for?
 As an administrator, more often than not you will have needed to use Workbench to search for specific records, to extract certain sets of data via Dataloader, or even access the Developer Console. All these tools interact with Salesforce via API, and they use SOQL queries to retrieve the data requested by the Admin or the Developer.
 
@@ -29,6 +30,7 @@ Even though most of these tools have a built in wizard that allow you to select 
 
 Let's have a look!
 
+---
 # How does SOQL work?
 For each query, we ask three questions. We have to define what fields we will want to see (**what**), which object we will look for them (**where**), and the conditions we will want the answer to follow (**how**, optional).
 
@@ -52,19 +54,23 @@ The query in this specific example would be:
 
 ![Query example]({{site.url}}{{site.baseurl}}/pictures/18-10-2019/01.png)
 
-
+---
 # SOQL Clauses used in our example
 
 In our example the clauses are written in capital letters. Let’s analyze the two clauses and the syntax used in our query:
 
+---
 ## SELECT (mandatory)
 This clause precedes the API names of the fields we want, separated by commas. As we can see in the result, these fields are now the columns of the Query Result.
 
+---
 ## FROM (mandatory)
 This clause precedes the API name of the object we are searching the fields in, in this case Account.
 
+---
 # Other SOQL Clauses
 
+---
 ## WHERE (optional)
 This clause precedes the condition we are establishing. It can contain: 
 
@@ -109,6 +115,7 @@ As we can see, the result is the same as before, but excluding the Accounts that
 
 ![Where example 2]({{site.url}}{{site.baseurl}}/pictures/18-10-2019/03.png)
 
+---
 ## ORDER BY (optional)
 This clause precedes:
 - API name of the field we want to sorting to be based on
@@ -130,6 +137,7 @@ This clause precedes:
 
 ![Order by example 2]({{site.url}}{{site.baseurl}}/pictures/18-10-2019/05.png)
 
+---
 ## LIMIT (optional)
 
 This clause precedes the number of records we want to be returned at maximum in the result.
@@ -141,6 +149,7 @@ This clause precedes the number of records we want to be returned at maximum in 
 
 ![Limit example 1]({{site.url}}{{site.baseurl}}/pictures/18-10-2019/06.png)
 
+---
 ## OFFSET (optional)
 This clause precedes the starting row for our data retrieval.
 
@@ -151,6 +160,7 @@ This clause precedes the starting row for our data retrieval.
 
 ![Offset example 1]({{site.url}}{{site.baseurl}}/pictures/18-10-2019/07.png)
 
+---
 # Conclusion
 
 If we're able to write SOQL statements combining all these clauses and operators, we can retrieve data in a fairly optimized way. However, SOQL can get pretty more complicated than what we've learned in this post, and there will be future posts diving deeper into SOQL.
