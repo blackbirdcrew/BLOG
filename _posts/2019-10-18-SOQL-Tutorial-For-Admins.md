@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "SOQL Tutorial for Admins"
-date:   2019-07-18 00:02:00 -0800
+date:   2019-10-18 00:02:00 -0800
 author: Lucas Puig Batlló
 categories: SOQL Salesforce
 comments: true
