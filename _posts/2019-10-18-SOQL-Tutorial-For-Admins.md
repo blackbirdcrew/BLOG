@@ -59,19 +59,16 @@ The query in this specific example would be:
 
 In our example the clauses are written in capital letters. Let’s analyze the two clauses and the syntax used in our query:
 
----
-## SELECT (mandatory)
+**SELECT (mandatory)**
 This clause precedes the API names of the fields we want, separated by commas. As we can see in the result, these fields are now the columns of the Query Result.
 
----
-## FROM (mandatory)
+**FROM (mandatory)**
 This clause precedes the API name of the object we are searching the fields in, in this case Account.
 
 ---
 # Other SOQL Clauses
 
----
-## WHERE (optional)
+**WHERE (optional)**
 This clause precedes the condition we are establishing. It can contain: 
 
 - Operators
@@ -116,7 +113,7 @@ As we can see, the result is the same as before, but excluding the Accounts that
 ![Where example 2]({{site.url}}{{site.baseurl}}/pictures/18-10-2019/03.png)
 
 ---
-## ORDER BY (optional)
+**ORDER BY (optional)**
 This clause precedes:
 - API name of the field we want to sorting to be based on
 - `ASC` or `DESC`: whether it’s applied in an ascending or descending order
@@ -138,7 +135,7 @@ This clause precedes:
 ![Order by example 2]({{site.url}}{{site.baseurl}}/pictures/18-10-2019/05.png)
 
 ---
-## LIMIT (optional)
+**LIMIT (optional)**
 
 This clause precedes the number of records we want to be returned at maximum in the result.
 
@@ -150,7 +147,7 @@ This clause precedes the number of records we want to be returned at maximum in 
 ![Limit example 1]({{site.url}}{{site.baseurl}}/pictures/18-10-2019/06.png)
 
 ---
-## OFFSET (optional)
+**OFFSET (optional)**
 This clause precedes the starting row for our data retrieval.
 
 
