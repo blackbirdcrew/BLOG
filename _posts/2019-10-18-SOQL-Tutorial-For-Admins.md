@@ -163,10 +163,10 @@ This clause precedes the starting row for our data retrieval.
 ---
 # Conclusion
 
-If we're able to write SOQL statements combining all these clauses and operators, we can retrieve data in a fairly optimized way. However, SOQL can get pretty more complicated than what we've learned in this post, and there will be future posts diving deeper into SOQL.
-
 Let's try to build a query combining as many clauses as we can!
 
 `SELECT BillingCity,LastModifiedDate,Name FROM Account WHERE LastModifiedDate >= 2019-10-16T00:00:00.000Z AND BillingCity = 'Barcelona' ORDER BY Name ASC NULLS FIRST LIMIT 3 OFFSET 1`
 
 ![Conclusion example 1]({{site.url}}{{site.baseurl}}/pictures/18-10-2019/08.png)
+
+If we're able to write SOQL statements combining all these clauses and operators, we can retrieve data in a fairly optimized way. However, SOQL can get pretty more complicated than what we've learned in this post, and there will be future posts diving deeper into SOQL.
