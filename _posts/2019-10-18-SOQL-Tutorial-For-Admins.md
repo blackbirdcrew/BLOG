@@ -115,6 +115,7 @@ This clause precedes:
 - `NULLS FIRST` or `NULLS LAST` (optional): whether the records with a null value in that field appear first or last
 
 
+
 - We want our results to be sorted by the Account name, in ascending order
 
 `SELECT Name, BillingCity, LastModifiedDate FROM Account ORDER BY Name ASC`
