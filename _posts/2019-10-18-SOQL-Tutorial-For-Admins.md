@@ -114,7 +114,7 @@ This clause precedes:
 - `ASC` or `DESC`: whether it’s applied in an ascending or descending order
 - `NULLS FIRST` or `NULLS LAST` (optional): whether the records with a null value in that field appear first or last
 
-
+Let's see another example:
 
 - We want our results to be sorted by the Account name, in ascending order
 
