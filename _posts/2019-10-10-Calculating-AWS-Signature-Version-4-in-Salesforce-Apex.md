@@ -268,7 +268,7 @@ To perform the request we will then just call the “`sendRequest()`” method.
 
 The endpoint varies depending on the requested service. S3, for example, does not use region while SNS does use it. Check the documentation of the service when creating a new service integration.
 
-## Implementing out class
+## Implementing our class
 The implementations of this class will be something like this:
 ```javascript
 public class AWSS3_GetService extends AWS {
