@@ -68,6 +68,7 @@ The action fired by the listener will have access to the data defined in the *de
 ```
 
 Once the main ins and outs have been explained here is a demo of the final component once implemented. Hope you like it!
+
 [![Watch the video](https://img.youtube.com/vi/pCSnZ2XsC8c/maxresdefault.jpg)](https://youtu.be/pCSnZ2XsC8c)
 
 
