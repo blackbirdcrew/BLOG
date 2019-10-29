@@ -67,7 +67,7 @@ The action fired by the listener will have access to the data defined in the *de
 },
 ```
 
-Once the main ins and outs have been explained here is a demo of the final component once implemented. Hope you like it!
+Once the main ins and outs have been explained [here](https://youtu.be/pCSnZ2XsC8c) is a demo of the final component once implemented. Hope you like it!
 
 ## Highlights of LWC
 - Ability to import Salesforce modules directly into your JavaScript file.
