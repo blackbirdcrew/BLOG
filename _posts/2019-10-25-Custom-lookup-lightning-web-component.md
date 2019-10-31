@@ -70,7 +70,7 @@ The action fired by the listener will have access to the data defined in the *de
 Once the main ins and outs have been explained here is a demo of the final component once implemented. Hope you like it!
 
 
-[![Watch the video]({{site.url}}{{site.baseurl}}/pictures/25-10-2019/youtube.jpg)](http://www.youtube.com/watch?v=pCSnZ2XsC8c "Video")
+[![Watch the video]({{site.url}}{{site.baseurl}}/pictures/25-10-2019/youtube2.jpg)](http://www.youtube.com/watch?v=pCSnZ2XsC8c "Video")
 
 
 ## Highlights of LWC
