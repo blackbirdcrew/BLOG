@@ -43,7 +43,7 @@ Also note the easiness of code blocks dynamic rendering in LWC thanks to if:true
 
 `TOBESUBSTITUTED_BYCustomLookuphtml`
 
-The logic of the lookup model has been encapsulated into the lookup LWC that is made up of only the JavaScript class. In it the properties available for each lookup instance have defined and also the functions available. Once defined, the CustomLookup LWC imports the Lookup LWC and creates an instance of it as a property of our component, it will be the *lookup* attribute.
+The logic of the lookup model has been encapsulated into the lookup LWC that is made up of only the JavaScript class, where the properties available for each lookup instance have been defined and also the functions available. Once defined, the CustomLookup LWC imports the Lookup LWC and creates an instance of it as a property of our component, it will be the *lookup* attribute.
 
 `TOBESUBSTITUTED_BYLookupjs`
 
